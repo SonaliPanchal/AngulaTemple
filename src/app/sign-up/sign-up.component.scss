@@ -1,0 +1,51 @@
+.mdc-text-field--outlined:not(.mdc-select--disabled) .mdc-notched-outline__leading, .mdc-text-field--outlined:not(.mdc-select--disabled) .mdc-notched-outline__notch, .mdc-text-field--outlined:not(.mdc-select--disabled) .mdc-notched-outline__trailing {
+    border-color: #f36921;
+}
+.mdc-select--outlined:not(.mdc-select--disabled) .mdc-notched-outline__leading, .mdc-select--outlined:not(.mdc-select--disabled) .mdc-notched-outline__notch, .mdc-select--outlined:not(.mdc-select--disabled) .mdc-notched-outline__trailing {
+    border-color: #f36921;
+}
+.mdc-text-field--invalid:not(.mdc-text-field--disabled) .mdc-floating-label .mdc-floating-label{
+    color: #f36921;
+}
+.mdc-text-field:not(.mdc-select--disabled).mdc-text-field--focused .mdc-floating-label {
+    color: #f36921;
+}
+.mdc-text-field--outlined:not(.mdc-text-field--disabled),.mdc-select.mdc-select--outlined:not(.mdc-select--disabled) {
+    background-color: #fff;
+    width: 100%;
+}
+.inputbox_ {
+    padding: 5px;
+}
+.mdc-select.mdc-select--outlined .mdc-floating-label--float-above,.mdc-text-field.mdc-text-field--outlined .mdc-floating-label--float-above{
+    color:#f36921;
+    background-color: #fff;
+    position: relative;
+    width: 100%;
+}
+label.mdc-floating-label--float-above {
+    top: 13px;
+    background-color: #fff;
+}
+.mdc-select--outlined .mdc-select__native-control, .mdc-select--outlined .mdc-select__selected-text{
+    padding-bottom:0px;
+}
+.mdc-notched-outline .mdc-floating-label--float-above {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+}
+.mdc-notched-outline .mdc-floating-label{
+    position: absolute !important;
+}
+i.material-icons.position_detect { 
+    left: auto;
+    right: 8px;
+    position: absolute;
+    bottom: 8px;
+    width: 24px;
+    height: 24px;
+    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    color: #767676;
+    }

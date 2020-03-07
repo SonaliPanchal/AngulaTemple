@@ -1,0 +1,154 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+              <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left">
+                    Back</i></a></div>
+              <h3>Add <a [routerLink]="['/temple_schedule']">Employee</a></h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product" style="margin-top:34px;">
+
+              <div class="row">
+                <!-- <div class="container"> -->
+                  <div class="clearfix"></div>
+                  <div class="mdc-layout-grid">
+                    <div class="mdc-layout-grid__inner">
+
+                      <!-- <div class="mdc-layout-grid__cell--span-12"> -->
+                        <!-- <div class="mdc-layout-grid__inner"> -->
+                          <div class="mdc-layout-grid__cell--span-12">
+                            <form #employeeForm='ngForm'>
+                            <!-- <div class="col-md-4"> -->
+                            <!-- <div class="res">
+                              <div> -->
+                                <!-- <input type="text" name="usrname" placeholder="Employee_ID"> -->
+                                <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl Employee_ID">
+                                  <input type="text" id="Employee_ID" #employee_id  pattern="[0-9]+" required name="employee_id" class="mdc-text-field__input" ngModel>
+                                  <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                      <label for="Employee_ID" class="{{employee_id.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Employee ID</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                  </div>
+                                </div>
+                              <!-- </div> -->
+                              <br><br>
+                              <!-- <div> -->
+                                <!-- <input type="text" name="usrname" placeholder="Employee Name"> -->
+                                <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl Employee_Name">
+                                  <input type="text" id="Employee_Name" #employee_name name="employee_name" class="mdc-text-field__input" ngModel>
+                                  <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                      <label for="Employee_Name" class="{{employee_name.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Employee Name</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                  </div>
+                                </div><br><br>
+                              <!-- </div> -->
+                              <!-- <div> -->
+                                <!-- <input type="text" name="usrname" placeholder="Assignment Start"> -->
+                                <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl Assignment_Start">
+                                  <input type="text" [matDatepicker]="picker" #Assignment_Start id="Assignment_Start" name="assignment_start" class="mdc-text-field__input" [max]="maxDate"  ngModel>
+                                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker color="primary"></mat-datepicker>
+                                  <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                      <label for="Assignment_Start" class="{{Assignment_Start.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Assignment Start</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                  </div>
+                                </div><br><br>
+                              <!-- </div>
+                              <div> -->
+                                <!-- <input type="text" name="usrname" placeholder="Assignment End"> -->
+                                <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl Assignment_End">
+                                  <input type="text" [max]="maxDate" [matDatepicker]="picker1" #Assignment_End id="Assignment_End" name="assignment_end" class="mdc-text-field__input" ngModel>
+                                  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker1 color="primary"></mat-datepicker><div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                      <label for="Assignment_End" class="{{Assignment_End.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Assignment End</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                  </div>
+                                </div><br><br>
+                              <!-- </div>
+                              <div> -->
+                                <!-- <input type="text" name="usrname" placeholder="Employee Type"> -->
+                                <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl Employee_Type">
+                                  <input type="text" id="Employee_Type" #employee_type name="employee_type" class="mdc-text-field__input" ngModel>
+                                  <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                      <label for="Employee_Type" class="{{employee_type.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Employee Type</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                  </div>
+                                </div><br><br>
+                             
+                                <div class="mdc-select mdc-select--outlined new-pur-contorl Role">
+                                    <i class="material-icons position_detect">
+                                      arrow_drop_down
+                                    </i>
+                                    <select class="mdc-select__native-control" #role name="role" required ngModel> 
+                                      <option value="" disabled selected></option>
+                                      <option value="1">1</option>
+                                      <option value="2">2</option>
+                                      <option value="3">3</option>
+                                      <option value="4">4</option>
+                                      <option value="5">5</option>
+                                    </select>
+                                    <div class="mdc-notched-outline">
+                                      <div class="mdc-notched-outline__leading"></div>
+                                      <div class="mdc-notched-outline__notch">
+                                        <label class="{{role.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Role</label>
+                                      </div>
+                                      <div class="mdc-notched-outline__trailing"></div>
+                                    </div>
+                                  </div>
+                                <br><br>
+                              <!-- </div>
+                              <div> -->
+                                <!-- <input type="text" name="usrname" placeholder="Group ID"> -->
+                                <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl Group_ID">
+                                  <input type="text" id="Group_ID" pattern="^[0-9]*$" required #group_id name="group_id" class="mdc-text-field__input" ngModel>
+                                  <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                      <label for="Group_ID" class="{{group_id.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Group ID</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                  </div>
+                                </div><br><br>
+                                </form>
+                              <!-- </div> -->
+                              <div><button style="width:160px;"
+                                  class="mdc-button mdc-button--raised button button-big" [disabled]="!employeeForm.valid" (click)="creatEmployee(employeeForm.value);employeeForm.reset()">Submit</button></div>
+                            </div>
+                            <!-- </div> -->
+                          <!-- </div> -->
+                        <!-- </div> -->
+                      </div>
+                    </div>
+                  <!-- </div> -->
+                  <div class="clear"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+<!-- </div> -->

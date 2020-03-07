@@ -1,0 +1,368 @@
+<div class="views">
+  <div class="view view-main">
+
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+              <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left">
+                    Back</i></a></div>
+              <h3>Priest & <a href="javascript.void(0)" [routerLink]="['/resrvation']">Facility Reservation</a></h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+
+              <div class="row">
+                <div class="container">
+                  <div class="mdc-layout-grid">
+                    <div class="mdc-layout-grid__inner">
+                      <div class="mdc-layout-grid__cell--span-8 priest_bg">
+                        <form #formVal="ngForm">
+                          <div class="mdc-layout-grid__inner">
+                            <div class="mdc-layout-grid__cell--span-12">
+                              <div class="mdc-checkbox mdc-checkbox--disabled">
+                                <input type="checkbox" class="mdc-checkbox__native-control" [checked]="true"
+                                  id="checkbox-1" name="require_priest" [(ngModel)]="selectedCheck">
+                                <div class="mdc-checkbox__background">
+                                  <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                                    <path class="mdc-checkbox__checkmark-path" fill="none"
+                                      d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                  </svg>
+                                  <div class="mdc-checkbox__mixedmark"></div>
+                                </div>
+                              </div>
+                              <label for="checkbox-1">Require Priest Booking</label>
+                            </div>
+                            <div class="mdc-layout-grid__cell--span-4">
+                              <div class="mdc-radio homeradio">
+                                <input class="mdc-radio__native-control" type="radio" id="radio-12" #radio1
+                                  name="puja_type" checked (click)="changeRadioButton($event,'puja_home')">
+                                <div class="mdc-radio__background">
+                                  <div class="mdc-radio__outer-circle"></div>
+                                  <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                              </div>
+                              <label for="radio-1">Puja @ Home</label>
+                              <div class="mdc-select mdc-select--outlined new-pur-contorl p_type_home">
+                                <i class="material-icons position_detect">
+                                  arrow_drop_down
+                                </i>
+                                <select class="mdc-select__native-control" name="puja_id_home"
+                                  (change)="getPriestFee($event.target.value)" [required]="!disablePujaHome"
+                                  #puja_id_home id="puja_id_home" [(ngModel)]="dataObj.puja_id">
+                                  <option value="" disabled selected></option>
+                                  <option [value]="puja.puja_id" *ngFor="let puja of pujaAtHome">{{puja.puja_name}}
+                                  </option>
+
+                                </select>
+                                <div class="mdc-notched-outline">
+                                  <div class="mdc-notched-outline__leading"></div>
+                                  <div class="mdc-notched-outline__notch">
+                                    <label
+                                      class="{{puja_id_home.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Puja</label>
+                                  </div>
+                                  <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                              </div>
+
+
+                              <div class="mdc-select mdc-select--outlined new-pur-contorl p_name">
+                                <i class="material-icons position_detect">
+                                  arrow_drop_down
+                                </i>
+                                <select class="mdc-select__native-control" name="priest_id" #priest_id="ngModel"
+                                  [(ngModel)]="dataObj.priest_id">
+                                  <option value="" disabled selected></option>
+                                  <option [value]="priest.priest_id" *ngFor="let priest of priestName">
+                                    {{priest.priest_name}}</option>
+
+                                </select>
+                                <div class="mdc-notched-outline">
+                                  <div class="mdc-notched-outline__leading"></div>
+                                  <div class="mdc-notched-outline__notch">
+                                    <label
+                                      class="{{priest_id.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Priest
+                                      Name</label>
+                                  </div>
+                                  <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                              </div>
+
+                              <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl fees">
+                                <input type="text" id="priest_fees" pattern='^[0-9]+$' [disabled]="true" required
+                                  class="mdc-text-field__input" name="priest_fee" [(ngModel)]="dataObj.priest_fee"
+                                  (change)="enteringFees($event.target.value)">
+                                <div class="mdc-notched-outline">
+                                  <div class="mdc-notched-outline__leading"></div>
+                                  <div class="mdc-notched-outline__notch">
+                                    <label for="priest_fees"
+                                      class="{{dataObj.priest_fee?'mdc-floating-label--float-above':'mdc-floating-label'}}">Fees</label>
+                                  </div>
+                                  <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                              </div>
+                              <button class="mdc-btn mdc-button--raised btn2" [disabled]="!formVal.valid"
+                                (click)="getPriestBooking()" *ngIf="disabledFacility">Submit</button>
+                            </div>
+                            <div class="mdc-layout-grid__cell--span-4">
+                              <div class="mdc-radio">
+                                <input class="mdc-radio__native-control" type="radio" id="radio-2" name="puja_type"
+                                  (click)="changeRadioButton($event,'puja_temple')">
+                                <div class="mdc-radio__background">
+                                  <div class="mdc-radio__outer-circle"></div>
+                                  <div class="mdc-radio__inner-circle"></div>
+                                </div>
+                              </div>
+                              <label for="radio-1">Puja @ Temple</label>
+
+                              <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl dateTime">
+                                <input type="text" [owlDateTime]="dt2_" [min]="dateToday" #date3 id="date3"
+                                  class="mdc-text-field__input" required name="dateAndTime"
+                                  [(ngModel)]="dataObj.dateAndTime">
+                                <!-- <input [owlDateTime]="dt2_" placeholder="Date Time"> -->
+                                <span [owlDateTimeTrigger]="dt2_"><i class="material-icons owlCal">event</i></span>
+                                <owl-date-time #dt2_></owl-date-time>
+                                <div class="mdc-notched-outline">
+                                  <div class="mdc-notched-outline__leading"></div>
+                                  <div class="mdc-notched-outline__notch">
+                                    <label for="tf-outlined4"
+                                      class="{{dataObj.dateAndTime?'mdc-floating-label--float-above':''}} mdc-floating-label">Date
+                                      & Time</label>
+                                  </div>
+                                  <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="mdc-layout-grid__cell--span-4">
+
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+
+                      <div class="mdc-layout-grid__cell--span-8 priest_bg">
+                        <form #formData="ngForm">
+                          <div class="mdc-layout-grid__inner">
+                            <!-- <div class="res"> -->
+                            <div class="mdc-layout-grid__cell--span-12">
+                              <div class="mdc-checkbox secondCheckbox">
+                                <input type="checkbox" class="mdc-checkbox__native-control" id="checkbox-12"
+                                  name="require2" ngModel (change)="requireFacility($event)" />
+                                <div class="mdc-checkbox__background">
+                                  <svg class="mdc-checkbox__checkmark" viewBox="0 0 24 24">
+                                    <path class="mdc-checkbox__checkmark-path" fill="none"
+                                      d="M1.73,12.91 8.1,19.28 22.79,4.59" />
+                                  </svg>
+                                  <div class="mdc-checkbox__mixedmark"></div>
+                                </div>
+                              </div>
+                              <label for="checkbox-12">Require Facility Booking</label>
+                            </div>
+                            <div class="mdc-layout-grid__cell--span-4">
+                              <div class="mdc-select mdc-select--outlined new-pur-contorl p_type1">
+                                <i class="material-icons position_detect">
+                                  arrow_drop_down
+                                </i>
+                                <select class="mdc-select__native-control" name="facility_id"
+                                  (change)="getFacilityFees($event.target.value)" [required]="!disabledFacility"
+                                  #facility_id [disabled]="disabledFacility" name="dateAndTime"
+                                  [(ngModel)]="dataObj.facility_id">
+                                  <option value="" disabled selected></option>
+                                  <option [value]="facility.facility_id" *ngFor="let facility of facilityName">
+                                    {{facility.facilty_name}}</option>
+
+                                </select>
+                                <div class="mdc-notched-outline">
+                                  <div class="mdc-notched-outline__leading"></div>
+                                  <div class="mdc-notched-outline__notch">
+                                    <label
+                                      class="{{dataObj.facility_id?'mdc-floating-label--float-above':'mdc-floating-label'}}">Facilty</label>
+                                  </div>
+                                  <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                              </div>
+                              <div class="inline-block">
+
+                                <!-- <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl toFromTime pickTime">
+                                    <input [owlDateTimeTrigger]="dt2_1" #pickTime [owlDateTime]="dt2_1" id="pickTime"
+                                      class="mdc-text-field__input" name="from_time" [required]="!disabledFacility"  [disabled]="true" [(ngModel)]="dataObj.from_time">
+                                    <span [owlDateTimeTrigger]="dt2_1"><i class="material-icons owlCal">alarm</i></span>
+                                    <owl-date-time [pickerType]="'timer'" #dt2_1></owl-date-time>
+                                    <div class="mdc-notched-outline">
+                                      <div class="mdc-notched-outline__leading"></div>
+                                      <div class="mdc-notched-outline__notch">
+                                        <label for="pickTime"
+                                          class=" {{dataObj.from_time?'mdc-floating-label--float-above':''}}  mdc-floating-label">Timeslot</label>
+                                      </div>
+                                      <div class="mdc-notched-outline__trailing"></div>
+                                    </div>
+                                  </div> -->
+
+                                <div
+                                  class="mdc-text-field mdc-text-field--outlined new-pur-contorl toFromTime pickTime">
+                                  <input #pickTime id="pickTime" class="mdc-text-field__input" name="from_time"
+                                    [required]="!disabledFacility" [disabled]="true" [(ngModel)]="dataObj.from_time">
+                                  <span><i class="material-icons owlCal">alarm</i></span>
+                                  <!-- <owl-date-time [pickerType]="'timer'" #dt2_1></owl-date-time> -->
+                                  <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                      <label for="pickTime"
+                                        class=" {{dataObj.from_time?'mdc-floating-label--float-above':''}}  mdc-floating-label">Timeslot</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                  </div>
+                                </div>To
+
+                                <!-- 
+                              <div
+                              class="mdc-text-field mdc-text-field--outlined new-pur-contorl toFromTime pickTimeTo">
+                              <input [owlDateTimeTrigger]="dt2_to" #pickTimeTo [required]="!disabledFacility" [owlDateTime]="dt2_to" id="pickTimeTo"
+                                class="mdc-text-field__input" name="to_time" [(ngModel)]="dataObj.to_time" [disabled]="true" >
+                              <span [owlDateTimeTrigger]="dt2_to"><i class="material-icons owlCal">alarm</i></span>
+                              <owl-date-time [pickerType]="'timer'" #dt2_to></owl-date-time>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="pickTimeTo"
+                                    class=" {{dataObj.to_time?'mdc-floating-label--float-above':''}}  mdc-floating-label">Timeslot</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div> -->
+
+                                <div
+                                  class="mdc-text-field mdc-text-field--outlined new-pur-contorl toFromTime pickTimeTo">
+                                  <input #pickTimeTo [required]="!disabledFacility" id="pickTimeTo"
+                                    class="mdc-text-field__input" name="to_time" [(ngModel)]="dataObj.to_time"
+                                    [disabled]="true">
+                                  <span><i class="material-icons owlCal">alarm</i></span>
+                                  <!-- <owl-date-time [pickerType]="'timer'" #dt2_to></owl-date-time> -->
+                                  <div class="mdc-notched-outline">
+                                    <div class="mdc-notched-outline__leading"></div>
+                                    <div class="mdc-notched-outline__notch">
+                                      <label for="pickTimeTo"
+                                        class=" {{dataObj.to_time?'mdc-floating-label--float-above':''}}  mdc-floating-label">Timeslot</label>
+                                    </div>
+                                    <div class="mdc-notched-outline__trailing"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl fess2">
+                                <input type="text" #facility123 id="facility123"
+                                  (change)="enteringFeesFacility($event.target.value)" [required]="!disabledFacility"
+                                  pattern='^[0-9]+$' name="facility_fee" #facility_fees
+                                  [(ngModel)]="dataObj.facility_fee" class="mdc-text-field__input" [disabled]="true">
+                                <div class="mdc-notched-outline">
+                                  <div class="mdc-notched-outline__leading"></div>
+                                  <div class="mdc-notched-outline__notch">
+                                    <label for="facility123"
+                                      class="{{dataObj.facility_fee?'mdc-floating-label--float-above':'mdc-floating-label'}}">Fees</label>
+                                  </div>
+                                  <div class="mdc-notched-outline__trailing"></div>
+                                </div>
+                              </div>
+                              <button class="md-button mdc-button--raised btn2" [disabled]="!formVal.valid"
+                                (click)="getPriestBooking()" *ngIf="!disabledFacility">Submit</button>
+                            </div>
+
+                            <div class="mdc-layout-grid__cell--span-4">
+
+
+
+                            </div>
+                            <div class="mdc-layout-grid__cell--span-4">
+
+                            </div>
+                            <!-- </div> -->
+                          </div>
+                        </form>
+                      </div>
+                      <!-- <div class="col-sm-12"> -->
+
+                      <div class="mdc-layout-grid__cell--span-8 priest_bg">
+                        <div class="mdc-layout-grid__inner">
+                          <!-- <div class="res"> -->
+                          <div class="mdc-layout-grid__cell--span-12">
+                            <h4>Invoice Details</h4>
+                          </div>
+                          <div class="mdc-layout-grid__cell--span-4">
+
+
+                            <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl invAmt">
+                              <input type="text" #invAmt id="invAmt" name="invAmt" [(ngModel)]="total_invoice"
+                                class="mdc-text-field__input">
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="invAmt"
+                                    class="{{invAmt.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Invoice
+                                    Amount</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                            <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl TimeSlot_">
+                              <!-- <input type="text"  #date_12 id="TimeSlot_"
+                                class="mdc-text-field__input"> -->
+                              <input type="text" [max]="maxDate" [matDatepicker]="picker" #date id="tf-outlined2"
+                                class="mdc-text-field__input" name="date_12" [(ngModel)]="selectedDate">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker color="primary"></mat-datepicker>
+
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="TimeSlot_"
+                                    class="{{date.value?'mdc-floating-label--float-above':'mdc-floating-label'}} ">Invoice
+                                    Date</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                            <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl pff">
+                              <input type="text" #pos id="pff" class="mdc-text-field__input" name="pos" ngModel>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="pff"
+                                    class="{{pos.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">POS
+                                    Referance </label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mdc-layout-grid__cell--span-4">
+
+
+                          </div>
+                          <div class="mdc-layout-grid__cell--span-4">
+
+                          </div>
+                          <!-- </div> -->
+                        </div>
+                      </div>
+
+
+                      <!-- </div> -->
+
+
+                      <div class="clearfix"></div>
+                      <div class="mdc-layout-grid__cell--span-4">
+
+                      </div>
+                    </div>
+
+                    <div class="clear"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <!-- </div> -->

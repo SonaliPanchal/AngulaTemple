@@ -1,0 +1,394 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+	<div class="view view-main">
+		<div class="pages navbar-through toolbar-through">
+			<div data-page="index" class="page">
+				<div class="page-content">
+					<div class="list-block">
+						<div class="section-heading">
+							<div class="left lt"><a class="cursor_pointer" (click)="back()"><i
+										class="fa fa-chevron-left"> Back</i></a></div>
+							<h3>Purchase Invoice</h3>
+						</div>
+						<div class="clear"></div>
+						<div class="features-product">
+							<div class="row">
+								<div style="position:absolute; float:left;">
+									<div class="mdc-text-field mdc-text-field--outlined new-pur-contorl date">
+										<input type="text" [max]="maxDate" [matDatepicker]="picker" #date1
+											[(ngModel)]="date" ngModel id="tf-outlined" class="mdc-text-field__input"
+											(dateChange)="changeDate($event.target.value)">
+										<mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+										<mat-datepicker #picker color="primary"></mat-datepicker>
+										<div class="mdc-notched-outline">
+											<div class="mdc-notched-outline__leading"></div>
+											<div class="mdc-notched-outline__notch">
+												<label for="tf-outlined"
+													class="{{date1.value?'mdc-floating-label--float-above':'mdc-floating-label'}} ">Purchase
+													Order Date</label>
+											</div>
+											<div class="mdc-notched-outline__trailing"></div>
+										</div>
+									</div>
+								</div>
+								<div style="height:78px;">
+									&nbsp;
+								</div>
+
+								<table class="tableMobilize table-striped">
+									<thead>
+										<tr>
+											<td>
+
+												<div class="mdc-select mdc-select--outlined new-pur-contorl poNo">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="po_no" #po_no
+														[(ngModel)]="dataObj.po_no"
+														(change)="ApplyFilter($event.target.value,'po_no')">
+														<option value="" disabled selected></option>
+														<option [value]="poNo.po_no"
+															*ngFor="let poNo of allPurchaseInvoice">{{poNo.po_no}}
+														</option>
+
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label
+																class="{{po_no.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">PO
+																No</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+
+												<div class="mdc-select mdc-select--outlined new-pur-contorl dO">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="dateOrder"
+														#date_order [(ngModel)]="dataObj.date_order"
+														(change)="ApplyFilter($event.target.value,'date_order')">
+														<option value="" disabled selected></option>
+														<option [value]="dateOrder.date_order"
+															*ngFor="let dateOrder of allPurchaseInvoice">
+															{{dateOrder.date_order}}</option>
+
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label
+																class="{{date_order.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Date
+																Ordered</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+
+											</td>
+											<td>
+
+												<div class="mdc-select mdc-select--outlined new-pur-contorl grecieved">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="good_received"
+														#goodReceived [(ngModel)]="dataObj.good_received"
+														(change)="ApplyFilter($event.target.value,'good_received')">
+														<option value="" disabled selected></option>
+														<option [value]="goodReceive.good_received"
+															*ngFor="let goodReceive of allPurchaseInvoice">
+															{{goodReceive.good_received}}</option>
+
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label
+																class="{{goodReceived.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Good
+																Received</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+
+												<div class="mdc-select mdc-select--outlined new-pur-contorl invoiceNo">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="invoice_no"
+														#Invoice [(ngModel)]="dataObj.invoice_no"
+														(change)="ApplyFilter($event.target.value,'invoice_no')">
+														<option value="" disabled selected></option>
+														<option [value]="Invoice.invoice_no"
+															*ngFor="let Invoice of allPurchaseInvoice">
+															{{Invoice.invoice_no}}</option>
+
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label
+																class="{{Invoice.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Invoice
+																No.</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+
+												<div
+													class="mdc-select mdc-select--outlined new-pur-contorl invoiceDate">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="invoice_date"
+														#invoice_date [(ngModel)]="dataObj.invoice_date"
+														(change)="ApplyFilter($event.target.value,'invoice_date')">
+														<option value="" disabled selected></option>
+														<option [value]="Invoice.invoice_date"
+															*ngFor="let Invoice of allPurchaseInvoice">
+															{{Invoice.invoice_date}}</option>
+
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label
+																class="{{invoice_date.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Invoice
+																Date</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+
+											</td>
+											<td>
+
+												<div class="mdc-select mdc-select--outlined new-pur-contorl venderName">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="venderName"
+														#vendorName [(ngModel)]="dataObj.vendor_name"
+														(change)="ApplyFilter($event.target.value,'vendor_name')">
+														<option value="" disabled selected></option>
+														<option [value]="vendor.vendor_name"
+															*ngFor="let vendor of allPurchaseInvoice">
+															{{vendor.vendor_name}}</option>
+
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label
+																class="{{vendorName.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Vender
+																Name</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+
+												<div
+													class="mdc-select mdc-select--outlined new-pur-contorl invoiceOAmt">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control"
+														name="invoice_original_amount" #InvoiceOrig
+														[(ngModel)]="dataObj.invoice_original_amount"
+														(change)="ApplyFilter($event.target.value,'invoice_original_amount')">
+														<option value="" disabled selected></option>
+														<option [value]="InvoiceOrig.invoice_original_amount"
+															*ngFor="let InvoiceOrig of allPurchaseInvoice">
+															{{InvoiceOrig.invoice_original_amount}}</option>
+
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label
+																class="{{InvoiceOrig.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Invoice
+																Original
+																Amount</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+
+												<div class="mdc-select mdc-select--outlined new-pur-contorl finalAmt">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control"
+														name="invoice_original_amount" #final_amount
+														[(ngModel)]="dataObj.invoice_original_amount"
+														(change)="ApplyFilter($event.target.value,'invoice_original_amount')">
+														<option value="" disabled selected></option>
+														<option
+															[value]="finalAmt.final_amount?finalAmt.final_amount:finalAmt.invoice_original_amount"
+															*ngFor="let finalAmt of allPurchaseInvoice">
+															{{finalAmt.final_amount?finalAmt.final_amount:finalAmt.invoice_original_amount}}
+														</option>
+
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label
+																class="{{final_amount.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Invoice
+																Final
+																Amount</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+
+												<div class="mdc-select mdc-select--outlined new-pur-contorl status">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="status" #status
+														[(ngModel)]="dataObj.status"
+														(change)="ApplyFilter($event.target.value,'status')">
+														<option value="" disabled selected></option>
+														<option [value]="status.status"
+															*ngFor="let status of allPurchaseInvoice">
+															{{getStatus(status.status)}}</option>
+
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label
+																class="{{status.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Status</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+
+												<div class="mdc-select mdc-select--outlined new-pur-contorl action">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="action" #action
+														[(ngModel)]="dataObj.action"
+														(change)="ApplyFilter($event.target.value,'action')">
+														<option value="" disabled selected></option>
+														<option [value]="action.action"
+															*ngFor="let action of allPurchaseInvoice">{{action.action}}
+														</option>
+
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label
+																class="{{action.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Action</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+
+												<div class="mdc-select mdc-select--outlined new-pur-contorl comment">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="comment" #comment
+														[(ngModel)]="dataObj.comment"
+														(change)="ApplyFilter($event.target.value,'comment')">
+														<option value="" disabled selected></option>
+														<option [value]="comment.comment"
+															*ngFor="let action of allPurchaseInvoice">
+															{{comment.comment}}</option>
+
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label
+																class="{{comment.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Comment</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>PO No.</th>
+											<th>Date Orderd</th>
+											<th>Goods Received</th>
+											<th>Invoice No.</th>
+											<th>Invoice Date</th>
+											<th>Vender Name</th>
+											<th>Invoice Original Amount</th>
+											<th>Invoice Final Amount</th>
+											<th>Status</th>
+											<th>Action</th>
+											<th>Comments</th>
+										</tr>
+									</thead>
+									<tbody>
+										<!-- | paginate:  { itemsPerPage: 1, currentPage: p ,totalItems: tempPriestTrac.length}" -->
+
+										<tr
+											*ngFor="let purInv of purchasInvoice | paginate:  { itemsPerPage: 50, currentPage: p ,totalItems: purchasInvoice.length}">
+											<td>{{purInv?.po_no}}</td>
+											<td>{{purInv?.date_order}}</td>
+											<td>{{purInv?.good_received}}</td>
+											<td>{{purInv?.invoice_no}}</td>
+											<td>{{purInv?.invoice_date}}</td>
+											<td>{{purInv?.vendor_name}}</td>
+											<td>{{purInv?.invoice_original_amount}}</td>
+											<td>{{purInv.final_amount?purInv.final_amount:purInv.invoice_original_amount}}
+											</td>
+											<td>{{getStatus(purInv.status)}}</td>
+											<td>{{purInv.action?purInv.action:'-'}}</td>
+
+											<td>{{purInv?.comments}}</td>
+											<!-- <td>{{purInv?.invoice_no}}</td> -->
+										</tr>
+										<tr *ngIf="!purchasInvoice?.length">
+											<td>Record not found</td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+											<td></td>
+										</tr>
+									</tbody>
+								</table>
+								<pagination-controls (pageChange)="p = $event"></pagination-controls>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

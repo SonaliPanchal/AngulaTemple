@@ -1,0 +1,257 @@
+.priest_bg {
+    background: #f3f3f3;
+    border: 1px solid #ccc;
+    padding: 15px;
+	margin:15px 15px 24px 15px;
+}  
+.po_bg{background:#83489a;}
+.im_bg{background:#387bc1;}
+.sm_bg{background:#8d080d;}
+.reservation_bg{background:#d9444a;}
+.security_bg{background:#afbb3d;}
+.shopbox{height:340px;}
+.left{float:left;}
+.f_right{display: inline;
+    float: right;}
+a{color:#a62227!important;}	
+.table>tbody>tr>th, table tr td, table tr th {font-size: 14px;
+    border: 1px solid #eec0b6;}	
+.table>thead>tr>th{border-bottom: 1px solid #a03334!important;border-top: 1px solid #a03334!important;
+    background: #a62227; color:#fdb224; text-align:center;}	
+.table>tbody>tr>td{padding:9px 18px!important;}	
+table{border: 2px solid #9f1a1f;}	
+.features-product input[type="text"]{background:#fff; margin-bottom:18px; font-size:14px; }
+.list-block input[type="text"]{ height:36px; padding: 0 10px;}
+.list-block select{height:42px; padding:0 10px;}
+.navbar{border:0px!important;}
+.btn2{
+    background-color: #a62227;
+    border: none;
+    color: white;
+    padding: 14px 28px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 34px 2px 4px;
+    cursor: pointer;
+}
+
+
+	
+@media (min-width:320px) and (max-width: 480px) {
+    .shopbox{height:160px;}
+	.fa_size{font-size: 50px!important;}
+	.shopbox a h3{top: 65%!important; font-size: 16px!important;}
+	.section-heading > h3{font-size: 16px;}
+}	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	table.tableMobilize tbody, table.tableMobilize td, table.tableMobilize th, table.tableMobilize tr {
+	border: 0; 
+	padding: 0;
+	white-space: normal;
+	font-size: 14px;
+}
+table.tableMobilize td, table.tableMobilize th {
+	padding:9px 12px;
+	line-height: 1.42857143;
+	vertical-align: top;
+	border: 1px solid #eec0b6;
+	text-align: left
+}
+table.tableMobilize.tableMobilized {
+	display: block
+}
+table.tableMobilize.tableMobilized tfooter, table.tableMobilize.tableMobilized thead {
+	display: none;
+	visibility: hidden
+}
+table.tableMobilize.tableMobilized td:hide {
+display:none!important
+}
+table.tableMobilize.tableMobilized tbody, table.tableMobilize.tableMobilized td, table.tableMobilize.tableMobilized th, table.tableMobilize.tableMobilized tr {
+	display: block
+}
+table.tableMobilize.tableMobilized td[data-title]:before {
+	content: attr(data-title) ": ";
+	color: #555
+}
+table.tableMobilize.tableMobilized th[data-title]:first-child:before {
+	content: ''
+}
+table.tableMobilize.tableMobilized th:first-child {
+	font-size: 1.4em;
+	border-top: none;
+	vertical-align: bottom;
+	margin-top: .5em;
+	text-transform: uppercase;
+	border-bottom: 1px solid #ddd;
+	font-weight: 400;
+	text-align: left;
+	color: #111
+}
+table.tableMobilize.tableMobilized td:first-child {
+	border-top: 2px solid #aaa
+}
+table.tableMobilize.tableMobilized tr:first-child td:first-child {
+	border-top: none!important
+}
+table.tableMobilized.table-striped>tbody>tr:nth-of-type(odd) td {
+	background-color: #f9f9f9
+}
+@media (max-width:767px) {
+table.tableMobilize {
+	display: block
+}
+table.tableMobilize tfooter, table.tableMobilize thead {
+	display: none;
+	visibility: hidden
+}
+table.tableMobilize td:hide {
+display:none!important
+}
+table.tableMobilize tbody, table.tableMobilize td, table.tableMobilize th, table.tableMobilize tr {
+	display: block
+}
+table.tableMobilize td[data-title]:before {
+	content: attr(data-title) ": ";
+	color: #555
+}
+table.tableMobilize th[data-title]:first-child:before {
+	content: ''
+}
+table.tableMobilize th:first-child {
+	font-size: 1.4em;
+	border-top: none;
+	vertical-align: bottom;
+	margin-top: .5em;
+	text-transform: uppercase;
+	border-bottom: 1px solid #ddd;
+	font-weight: 400;
+	text-align: left;
+	color: #111
+}
+table.tableMobilize td:first-child {
+	border-top: 2px solid #aaa
+}
+table.tableMobilize tr:first-child td:first-child {
+	border-top: none!important
+}
+table.tableMobilize.table-striped>tbody>tr:nth-of-type(odd) td {
+	background-color: #f9f9f9
+}
+}
+@media (min-width:768px) {
+table.tableMobilize>thead th { color:#fdb224; text-align:center;
+	vertical-align: bottom; background:#c52936;
+	border-bottom: 1px solid #c52936;
+	border-top: 0;
+	padding: 8px;
+	line-height: 1.42857143
+}
+table.tableMobilize.table-striped>tbody>tr:nth-of-type(odd) {
+	background-color: #f9f9f9
+}
+}
+
+
+
+
+/* Form Progress */
+ .progress {
+    width: 100%; 
+    margin: 20px auto;
+    text-align: center;
+    height: auto!important;
+    text-shadow: none!important;
+    background: transparent!important;
+    -webkit-box-shadow: none!important;
+}
+.progress .circle,
+.progress .bar {
+    display: inline-block;
+    background: #fff;
+    width: 70px;
+    height: 70px;
+    border-radius: 60px;
+    border: 1px solid #d5d5da;
+} 
+.progress .bar {
+  position: relative;
+  width:54px; 
+  height: 6px; 
+  top: -60px;
+  margin-left: -5px;
+  margin-right: -5px;
+  border-left: none;
+  border-right: none;
+  border-radius: 0;
+}
+.progress .circle .label {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 32px;
+    border-radius: 32px;
+    margin-top: 16px;
+    color: #b5b5ba;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+.progress .circle .title {
+     color: #b5b5ba;
+    font-size: 13px;
+    line-height:13px;  
+}
+.list-block select{margin-bottom:12px;}
+/* Done / Active */
+.progress .bar.done,
+.progress .circle.done {
+  background: #eee;
+}
+.progress .bar.active {
+  background: linear-gradient(to right, #EEE 40%, #FFF 60%);
+}
+.progress .circle.done .label {
+  color: #FFF;
+  background: #fb6c34;
+  box-shadow: inset 0 0 2px rgba(0,0,0,.2);
+}
+.progress .circle.done .title {
+  color: #444;
+} 
+.progress .circle.active .label {
+  color: #FFF;
+  background: #cc303c;
+  box-shadow: inset 0 0 2px rgba(0,0,0,.2);
+}
+.progress .circle.active .title {
+  color: #cc303c;
+}  
+
+.li_leave ul{padding:0;}
+.li_leave li{margin-bottom: 14px;}
+.li_leave li span{  
+    line-height: 18px;
+    text-align: left;
+    width: 175px;
+    display: inline-block; 
+} 
+.list-block input[type="text"]{margin-bottom: 14px;}

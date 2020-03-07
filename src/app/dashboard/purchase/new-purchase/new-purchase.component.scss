@@ -1,0 +1,115 @@
+.list-block select {
+    margin-bottom: 0px;
+} 
+table.tableMobilize td, table.tableMobilize th {
+}
+.new-pur-contorl {
+    width: 309px;
+}
+.mdc-select--outlined .mdc-select__native-control, .mdc-select--outlined .mdc-select__selected-tex{
+    padding-bottom:0px !important;
+}
+
+/*material.io customization*/
+.mdc-select--outlined:not(.mdc-select--disabled) {
+    background-color: #fff !important;
+}
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) {
+    background-color: #fff;
+}
+.mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-floating-label {
+    color: #f36921;
+}
+
+.mdc-text-field:not(.mdc-select--disabled).mdc-text-field--focused .mdc-floating-label {
+    color: #f36921;
+}
+.mdc-select--outlined:not(.mdc-select--disabled) .mdc-notched-outline__leading, .mdc-select--outlined:not(.mdc-select--disabled) .mdc-notched-outline__notch, .mdc-select--outlined:not(.mdc-select--disabled) .mdc-notched-outline__trailing {
+    border-color: #f36921;
+}
+.mdc-text-field--outlined:not(.mdc-select--disabled) .mdc-notched-outline__leading, .mdc-text-field--outlined:not(.mdc-select--disabled) .mdc-notched-outline__notch, .mdc-text-field--outlined:not(.mdc-select--disabled) .mdc-notched-outline__trailing {
+    border-color: #f36921;
+}
+
+.mdc-select---focused.select__dropdown-icon {
+    background: none !important ;
+}
+
+i.material-icons.position_detect { 
+    left: auto;
+    right: 8px;
+    position: absolute;
+    bottom: 16px;
+    width: 24px;
+    height: 24px;
+    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    color: #767676;
+    }
+/*material.io customization end*/
+.select-menu-newPO{/*width:100%;*/ background-color: #fff;}
+.new-po{width:160px; float:right}
+.new-po2{width:240px; float:right;}
+select.select-menu-newPO {
+    height: 38px;
+    width: 100%;
+}
+table {
+    table-layout: fixed;
+}
+td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-wrap: break-word;
+}
+.button-big {
+    width: 192px;
+}
+@media only screen and (max-width: 480px) {
+    /* horizontal scrollbar for tables if mobile screen */
+    .tablemobile {
+        overflow-x: auto;
+        display: block;
+    }
+}
+
+.border-arround {
+    /* border: 1px solid #e8e8e8; */
+    background: #f3f3f3;
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 15px 15px 24px 15px;
+}
+.mdc-layout-grid__cell--span-2.border-arround{
+    width: 80%;
+}
+.mdc-layout-grid__cell--span-3.border-arround{
+    width:90%;
+}
+.updateInvoice{
+    width: 240px;
+    float: center;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    left: 560px;
+    right: 560px;
+}
+
+.progress {
+    overflow: initial !important;
+}
+.mdc-select.mdc-select--outlined .mdc-floating-label--float-above,.mdc-text-field.mdc-text-field--outlined .mdc-floating-label--float-above{
+    color:#f36921;
+    background-color: #fff;
+    position: relative;
+    top:15px;
+}
+.mdc-notched-outline .mdc-floating-label--float-above {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: normal;
+}
+.mdc-notched-outline .mdc-floating-label{
+    position: absolute !important;
+}

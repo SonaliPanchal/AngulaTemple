@@ -1,0 +1,4 @@
+# Don't track content of these folders
+dist
+package-lock.json
+node_modules/

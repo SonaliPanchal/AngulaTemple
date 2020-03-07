@@ -1,0 +1,67 @@
+<!-- <div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main"> -->
+    <div class="navbar">
+      <div class="navbar-inner">
+        <div class="left">
+        </div>
+        <div class="center sliding"><img src="assets/images/logo.png" alt=""></div>
+        <!-- <div class="right" *ngIf="user_fullName==''"></div> -->
+        <div class="right" (click)="openMenu()">
+          <!-- <button class="" (click)="openMenu()">Log Out</button> -->
+          <span class="userName">{{user_fullName}}</span>
+          <i class="material-icons logoutOption" *ngIf="user_fullName!=''">
+              keyboard_arrow_down
+              </i>
+          <div class="mdc-menu mdc-menu-surface logoutMenu">
+              <ul class="mdc-list" role="menu" aria-hidden="true" aria-orientation="vertical" tabindex="-1">
+                <li class="mdc-list-item" role="menuitem" (click)="logOut()">
+                  <span class="mdc-list-item__text">Log Out</span>
+                </li>
+              </ul>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+              <h3>Login</h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+              <div class="row">
+
+                <div class="register-content">
+                  <form action="#">
+                    <div class="inputbox">
+                      <span>Username:</span><br>
+                      <input type="text" name="name" id="name" placeholder="Username">
+                    </div>
+                    <div class="inputbox">
+                      <span>Password:</span><br>
+                      <input type="password" name="password" placeholder="***********">
+                    </div>
+                    <div class="inputbox">
+                      <a data-popup=".popup-forgetpass" class="open-popup" href="#">Forget Password?</a>
+                    </div>
+                    <div class="inputbox">
+                      <button class="button button-big">Login</button>
+                    </div>
+                  </form>
+                  <p>Don’t have an account? <a data-popup=".popup-register" class="open-popup" href="signup.html">Sign
+                      Up</a></p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

@@ -1,0 +1,188 @@
+
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+              <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left">
+                    Back</i></a></div>
+              <h3>Purchase Order Tracker</h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+              <p>Filter by :</p>
+              <div class="row">
+
+                <div class="float_right">
+                  <p><strong>Payment:</strong> Cheque within one month of delivery</p>
+                </div>
+                <!-- tableMobilize table-striped -->
+                <table class="tableMobilize table-striped">
+                  <thead>
+                    <tr>
+                      <td>
+
+                        <div class="mdc-select mdc-select--outlined new-pur-contorl vender">
+                          <i class="material-icons position_detect">
+                            arrow_drop_down
+                          </i>
+                          <select class="mdc-select__native-control" [(ngModel)]="filterdObj.vendor_name"
+                            name="vendor_name" #vendor_name (change)="ApplyFilter($event.target.value,'vendor_name')">
+                            <option value="" disabled selected></option>
+                            <option *ngFor="let vendor of orderTracker" [value]="vendor.vendor_name">
+                              {{vendor.vendor_name}}</option>
+
+                          </select>
+                          <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                              <label
+                                class="{{vendor_name.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Vendor
+                                Name</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+
+                        <div class="mdc-select mdc-select--outlined new-pur-contorl pon">
+                          <i class="material-icons position_detect">
+                            arrow_drop_down
+                          </i>
+                          <select class="mdc-select__native-control" name="po_no" [(ngModel)]="filterdObj.po_no" #po_no
+                            (change)="ApplyFilter($event.target.value,'po_no')">
+                            <option value="" disabled selected></option>
+                            <option *ngFor="let poNo of orderTracker" [value]="poNo.po_no">{{poNo.po_no}}</option>
+                          </select>
+                          <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                              <label
+                                class="{{po_no.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Purchase
+                                Order Number</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+
+                        <div class="mdc-select mdc-select--outlined new-pur-contorl pod">
+                          <i class="material-icons position_detect">
+                            arrow_drop_down
+                          </i>
+                          <select class="mdc-select__native-control" name="Po_date" [(ngModel)]="filterdObj.po_date"
+                            #Po_date (change)="ApplyFilter($event.target.value,'po_date')">
+                            <option value="" disabled selected></option>
+                            <option *ngFor="let poDate of orderTracker" [value]="poDate.po_date">{{poDate.po_date}}
+                            </option>
+                          </select>
+                          <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                              <label
+                                class="{{Po_date.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Purchase
+                                Order Date</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                          </div>
+                        </div>
+
+                      </td>
+                      <td>
+
+                        <div class="mdc-select mdc-select--outlined new-pur-contorl dd">
+                          <i class="material-icons position_detect">
+                            arrow_drop_down
+                          </i>
+                          <select class="mdc-select__native-control" [(ngModel)]="filterdObj.date_recieved"
+                            name="date_recieved" #date_recieved
+                            (change)="ApplyFilter($event.target.value,'date_recieved')">
+                            <option value="" disabled selected></option>
+                            <option *ngFor="let delivery of orderTracker" [value]="delivery.date_recieved">
+                              {{delivery.date_recieved}}</option>
+                          </select>
+                          <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                              <label
+                                class="{{date_recieved.value?'mdc-floating-label--float-above':'mdc-floating-label'}} ">Received
+                                Date</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                          </div>
+                        </div>
+                      </td>
+                      <td>
+                        <div class="mdc-select mdc-select--outlined new-pur-contorl status">
+                          <i class="material-icons position_detect">
+                            arrow_drop_down
+                          </i>
+                          <select class="mdc-select__native-control" [(ngModel)]="filterdObj.status" name="status"
+                            #statusval ngModel (change)="ApplyFilter($event.target.value,'status')">
+                            <option value="" disabled selected></option>
+                            <option *ngFor="let statusVal of orderTracker" [value]="statusVal.status">
+                              {{getStatus(statusVal.status)}}</option>
+
+                          </select>
+                          <div class="mdc-notched-outline">
+                            <div class="mdc-notched-outline__leading"></div>
+                            <div class="mdc-notched-outline__notch">
+                              <label
+                                class="{{statusval.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Status</label>
+                            </div>
+                            <div class="mdc-notched-outline__trailing"></div>
+                          </div>
+                        </div>
+                      </td>
+                      <!-- <td></td> -->
+                    </tr>
+                    <tr>
+                      <th>Vendor Name</th>
+                      <th>PO No</th>
+                      <th>PO Date</th>
+                      <th>Received Date</th>
+                      <th>Status</th>
+                      <!-- <th>Action</th> -->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      *ngFor="let tracker of tempOrderTracker | paginate:  { itemsPerPage: 50, currentPage: p ,totalItems: tempOrderTracker?.length}">
+                      <td [routerLink]="['/purchase',tracker.purchase_id]">{{tracker.vendor_name}}</td>
+                      <td [routerLink]="['/purchase',tracker.purchase_id]"><a class="cursor_pointer" (click)="getPODetail(tracker.po_no)">{{tracker.po_no}}</a></td>
+                      <td [routerLink]="['/purchase',tracker.purchase_id]">{{tracker.po_date}}</td>
+                      <td [routerLink]="['/purchase',tracker.purchase_id]">{{tracker.date_recieved}}</td>
+                      <td [routerLink]="['/purchase',tracker.purchase_id]">{{getStatus(tracker.status)}}</td>
+                      <!-- <td ><button class="acion" [routerLink]="['/purchase',tracker.purchase_id]"><i class="material-icons">remove_red_eye</i></td> -->
+                    </tr>
+                    <tr *ngIf="!tempOrderTracker?.length">
+                      <td>Record Not Found</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <!-- <td></td> -->
+                    </tr>
+                  </tbody>
+                </table>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+                <div style="text-align:center; width:100%;">
+                  <button class="mdc-button mdc-button--raised btn2 cursor_pointer "><a style="color:#fff!important;"
+                      [routerLink]="['/purchase/new']">Create new PO</a></button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

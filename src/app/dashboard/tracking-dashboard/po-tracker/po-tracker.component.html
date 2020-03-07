@@ -1,0 +1,125 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+              <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left">
+                    Back</i></a></div>
+              <h3>Purchase Order Tracker</h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+              <p>Filter by :</p>
+              <div class="row">
+
+                <div>
+                  <p><strong>Payment:</strong> Cheque within one month of delivery</p>
+                </div>
+                <table class="tableMobilize table-striped">
+                  <thead>
+                    <tr>
+                      <td><select class="form-control" id="sel1">
+                          <option value="Vendor">Jordan Banana Food Service</option>
+                          <option value="Vendor">Turner Dairy Farms, Inc</option>
+                          <option value="Vendor">Patel</option>
+                          <option value="Vendor">Marburger Farm Dairy</option>
+                          <option value="Vendor">C Bear LLC</option>
+                        </select></td>
+                      <td><select class="form-control" id="sel1">
+                          <option value="Vendor">140123</option>
+                          <option value="Vendor">4830428</option>
+                          <option value="Vendor">141226</option>
+                          <option value="Vendor">2334348</option>
+                          <option value="Vendor">185237</option>
+                        </select></td>
+                      <td><select class="form-control" id="sel1">
+                          <option value="Vendor">20/06/2018</option>
+                          <option value="Vendor">22/06/2018 </option>
+                          <option value="Vendor">23/06/2018 </option>
+                          <option value="Vendor">24/06/2018 </option>
+                          <option value="Vendor">25/06/2018 </option>
+                        </select></td>
+                      <td><select class="form-control" id="sel1">
+                          <option value="Vendor">28/07/2018</option>
+                          <option value="Vendor">- </option>
+                          <option value="Vendor">27/07/2018 </option>
+                          <option value="Vendor">28/07/2018 </option>
+                          <option value="Vendor">29/07/2018 </option>
+                        </select></td>
+                      <td><select class="form-control" id="sel1">
+                          <option value="Vendor">Recieved</option>
+                          <option value="Vendor">Approved</option>
+                          <option value="Vendor">Paid</option>
+                          <option value="Vendor">Submitted</option>
+                          <option value="Vendor">Draft</option>
+                        </select></td>
+                    </tr>
+                    <tr>
+                      <th>Vendor Name</th>
+                      <th>PO No</th>
+                      <th>PO Date</th>
+                      <th>Delivery Date</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <!-- | paginate: { 
+                      itemsPerPage: pageSize,
+                      currentPage: p,
+                      totalItems: total } -->
+                    <tr>
+                      <td>Jordan Banana Food Service</td>
+                      <td><a href="invoice_no.html">140123</a></td>
+                      <td>20/06/2018</td>
+                      <td>28/07/2018</td>
+                      <td>Recieved</td>
+                    </tr>
+                    <tr>
+                      <td>Turner Dairy Farms, Inc</td>
+                      <td><a href="invoice_no.html">4830428</a></td>
+                      <td>22/06/2018</td>
+                      <td>-</td>
+                      <td>Ordered</td>
+                    </tr>
+                    <tr>
+                      <td>Patel</td>
+                      <td><a href="invoice_no.html">141226</a></td>
+                      <td>23/06/2018</td>
+                      <td>-</td>
+                      <td>Ordered</td>
+                    </tr>
+                    <tr>
+                      <td>Marburger Farm Dairy</td>
+                      <td><a href="invoice_no.html">2334348</a></td>
+                      <td>24/06/2018</td>
+                      <td>28/07/2018</td>
+                      <td>Recieved</td>
+                    </tr>
+                    <tr>
+                      <td>C Bear LLC</td>
+                      <td><a href="invoice_no.html">185237</a></td>
+                      <td>25/06/2018</td>
+                      <td>-</td>
+                      <td>Ordered</td>
+                    </tr>
+
+                  </tbody>
+                </table>
+                <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+                <div style="text-align:center; width:100%;">
+                  <button class="mdc-button mdc-button--raised btn2"><a style="color:#fff!important;" href="pur_order.html">Create new PO</a></button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

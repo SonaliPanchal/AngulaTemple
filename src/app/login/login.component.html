@@ -1,0 +1,92 @@
+<app-header></app-header>
+<div class="parentelement">
+  <ngx-loading-bar [includeSpinner]="false"></ngx-loading-bar>
+</div>
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+              <h3>Login</h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+              <div class="row">
+
+                <div class="register-content">
+                  <form ngNativeValidate name="formlogin" id="formlogin" #formlogin="ngForm">
+                    <div class="inputbox_">
+                      <!-- <span>Username:</span><br> -->
+                      <!-- <input type="text" name="name" id="name" placeholder="Username"> -->
+                      <div class="mdc-text-field mdc-text-field--outlined username">
+                        <input type="text" name="name" id="name" #email='ngModel' required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" class="mdc-text-field__input" ngModel>
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="name" class="mdc-floating-label">Username</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                      <div *ngIf="email.errors && email.touched" class="validation error-message">
+                          <div class="validation-error validation-helper" *ngIf="email.errors.required">
+                              <span class="fa fa-times required-message"></span>Please fill this field
+                          </div>
+                          <div class="validation-error validation-helper" *ngIf="email.errors.pattern">
+                              <span class="fa fa-times required-message"></span>Please enter valid email address
+                          </div>
+                        </div>
+                    </div>
+                    <div class="inputbox_">
+                      <!-- <span>Password:</span><br> -->
+                      <!-- <input type="password" name="password" placeholder="***********"> -->
+                      <div class="mdc-text-field mdc-text-field--outlined password" >
+                        <input type="password" name="password" minlength="5" id="password" #password='ngModel'
+                          class="mdc-text-field__input" required ngModel>
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="password" class="mdc-floating-label">Password</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                      <div *ngIf="password.errors && password.touched" class="validation error-message">
+                          <div class="validation-error validation-helper" *ngIf="password.errors.required">
+                              <span class="fa fa-times required-message"></span>Please fill this field
+                          </div>
+                          <div class="validation-error validation-helper" *ngIf="password.errors.minlength">
+                              <span class="fa fa-times " ></span>Please enter minimum 5 letters
+                          </div>
+                        </div>
+                    </div>
+                    <div class="inputbox">
+                      <a data-popup=".popup-forgetpass" class="open-popup" href="javascript:void(0)"
+                        [routerLink]="['/login/forgot_password']">Forget Password?</a>
+                    </div>
+                    <div class="inputbox">
+                      <!-- <button class="button button-big">Login</button> -->
+                      <button class="mdc-button mdc-button--raised button button-big" [disabled]="!formlogin.valid"
+                        (click)="onLogin(formlogin.value)">
+                        Login
+                      </button>
+                    </div>
+                  </form>
+                  <p>Don’t have an account? <a data-popup=".popup-register" class="open-popup" href="javascript:void(0)"
+                      [routerLink]="['/signup']">Sign
+                      Up</a></p>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

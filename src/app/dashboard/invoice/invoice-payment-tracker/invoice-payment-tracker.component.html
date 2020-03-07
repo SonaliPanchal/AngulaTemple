@@ -1,0 +1,435 @@
+<app-purchase-invoice></app-purchase-invoice>
+
+<!-- <div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+	<div class="view view-main">
+		<div class="pages navbar-through toolbar-through">
+			<div data-page="index" class="page">
+				<div class="page-content">
+					<div class="list-block">
+						<div class="section-heading">
+							<div class="left lt"><a class="cursor_pointer" (click)="back()"><i
+										class="fa fa-chevron-left"> Back</i></a></div>
+							<h3>Purchase Invoice</h3>
+						</div>
+						<div class="clear"></div>
+						<div class="features-product">
+							<div class="row">
+								<div style="position:absolute; float:left;">
+									
+									<div class="mdc-select mdc-select--outlined new-pur-contorl date">
+										<i class="material-icons position_detect">
+											arrow_drop_down
+										</i>
+										<select class="mdc-select__native-control" name="poNo">
+											<option value="" disabled selected></option>
+											<option value="Vendor">140123</option>
+											<option value="Vendor">12046</option>
+											<option value="Vendor">12048</option>
+											<option value="Vendor">12049</option>
+											<option value="Vendor">12051</option>
+										</select>
+										<div class="mdc-notched-outline">
+											<div class="mdc-notched-outline__leading"></div>
+											<div class="mdc-notched-outline__notch">
+												<label class="mdc-floating-label">Purchase
+													Order Date</label>
+											</div>
+											<div class="mdc-notched-outline__trailing"></div>
+										</div>
+									</div>
+								</div>
+								<div style="height:78px;">
+									&nbsp;
+								</div>
+
+								<table class="tableMobilize table-striped">
+									<thead>
+										<tr>
+											<td>
+											
+												<div class="mdc-select mdc-select--outlined new-pur-contorl poNo">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="poNo">
+														<option value="" disabled selected></option>
+														<option value="Vendor">140123</option>
+														<option value="Vendor">12046</option>
+														<option value="Vendor">12048</option>
+														<option value="Vendor">12049</option>
+														<option value="Vendor">12051</option>
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label class="mdc-floating-label">PO No</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+											
+												<div class="mdc-select mdc-select--outlined new-pur-contorl dO">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="date_ordered">
+														<option value="" disabled selected></option>
+														<option value="Vendor">03/10/2019</option>
+														<option value="Vendor">03/18/2019</option>
+														<option value="Vendor">03/21/2019</option>
+														<option value="Vendor">03/01/2019</option>
+														<option value="Vendor">03/17/2019</option>
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label class="mdc-floating-label">Date Ordered</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+												
+											</td>
+											<td>
+											
+												<div class="mdc-select mdc-select--outlined new-pur-contorl grecieved">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="good_received">
+														<option value="" disabled selected></option>
+														<option value="Vendor">140123</option>
+														<option value="Vendor">12046</option>
+														<option value="Vendor">12048</option>
+														<option value="Vendor">12049</option>
+														<option value="Vendor">12051</option>
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label class="mdc-floating-label">Good Received</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+												
+											</td>
+											<td>
+											
+												<div class="mdc-select mdc-select--outlined new-pur-contorl invoiceNo">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="invoiceNo">
+														<option value="" disabled selected></option>
+														<option value="Vendor">140123</option>
+														<option value="Vendor">12046</option>
+														<option value="Vendor">12048</option>
+														<option value="Vendor">12049</option>
+														<option value="Vendor">12051</option>
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label class="mdc-floating-label">Invoice No.</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+											
+												<div
+													class="mdc-select mdc-select--outlined new-pur-contorl invoiceDate">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="poNo">
+														<option value="" disabled selected></option>
+														<option value="Vendor">140123</option>
+														<option value="Vendor">12046</option>
+														<option value="Vendor">12048</option>
+														<option value="Vendor">12049</option>
+														<option value="Vendor">12051</option>
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label class="mdc-floating-label">Invoice
+																Date</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+											
+												<div class="mdc-select mdc-select--outlined new-pur-contorl venderName">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="venderName">
+														<option value="" disabled selected></option>
+														<option value="Vendor">Jordan Banana food Service</option>
+														<option value="Vendor">Turner Dairy Farms, Inc</option>
+														<option value="Vendor">SV Temple</option>
+														<option value="Vendor">Marburger Farm Dairy</option>
+														<option value="Vendor">C Bear LLC</option>
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label class="mdc-floating-label">Vender Name</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+											
+												<div
+													class="mdc-select mdc-select--outlined new-pur-contorl invoiceOAmt">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="venderName">
+														<option value="" disabled selected></option>
+														<option value="Vendor">$ 410.00</option>
+														<option value="Vendor">$ 489.00</option>
+														<option value="Vendor">$ 1487.00</option>
+														<option value="Vendor">$ 175.12</option>
+														<option value="Vendor">$ 123.56</option>
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label class="mdc-floating-label">Invoice Original
+																Amount</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+											
+												<div class="mdc-select mdc-select--outlined new-pur-contorl finalAmt">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="venderName">
+														<option value="" disabled selected></option>
+														<option value="Vendor">$ 410.00</option>
+														<option value="Vendor">$ 489.00</option>
+														<option value="Vendor">$ 1487.00</option>
+														<option value="Vendor">$ 175.12</option>
+														<option value="Vendor">$ 123.56</option>
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label class="mdc-floating-label">Invoice Final
+																Amount</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+											
+												<div class="mdc-select mdc-select--outlined new-pur-contorl status">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="status">
+														<option value="" disabled selected></option>
+														<option value="Vendor">Invoice Recieved</option>
+														<option value="Vendor">Processing</option>
+														<option value="Vendor">Payment Completed</option>
+														<option value="Vendor">Payment Rejected</option>
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label class="mdc-floating-label">Status</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+											
+												<div class="mdc-select mdc-select--outlined new-pur-contorl action">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="action">
+														<option value="" disabled selected></option>
+														<option value="Vendor">Invoice Recieved</option>
+														<option value="Vendor">Processing</option>
+														<option value="Vendor">Payment Completed</option>
+														<option value="Vendor">Payment Rejected</option>
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label class="mdc-floating-label">Action</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+											<td>
+											
+												<div class="mdc-select mdc-select--outlined new-pur-contorl comment">
+													<i class="material-icons position_detect">
+														arrow_drop_down
+													</i>
+													<select class="mdc-select__native-control" name="comment">
+														<option value="" disabled selected></option>
+														<option value="Vendor">Wrong Invoice</option>
+														<option value="Vendor">Wrong Invoice</option>
+														<option value="Vendor">Wrong Invoice</option>
+														<option value="Vendor">Wrong Invoice</option>
+													</select>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label class="mdc-floating-label">Comment</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+											</td>
+										</tr>
+										<tr>
+											<th>PO No.</th>
+											<th>Date Orderd</th>
+											<th>Goods Received</th>
+											<th>Invoice No.</th>
+											<th>Invoice Date</th>
+											<th>Vender Name</th>
+											<th>Invoice Original Amount</th>
+											<th>Invoice Final Amount</th>
+											<th>Status</th>
+											<th>Action</th>
+											<th>Comments</th>
+										</tr>
+									</thead>
+									<tbody>
+
+										<tr>
+											<td>140123</td>
+											<td>03/10/2019</td>
+											<td>03/15/2019</td>
+											<td>040123</td>
+											<td>03/15/2019</td>
+											<td>Jordan Banana food Service</td>
+											<td>$ 410.00</td>
+											<td>$ 410.00</td>
+											<td>
+												<select class="form-control" id="sel1">
+													<option value="Vendor">Invoice Recieved</option>
+													<option value="Vendor">Processing</option>
+													<option value="Vendor">Payment Completed</option>
+													<option value="Vendor">Payment Rejected</option>
+												</select>
+											</td>
+											<td>-</td>
+											<td>Wrong Invoice</td>
+										</tr>
+										<tr>
+											<td>12046</td>
+											<td>03/18/2019</td>
+											<td>03/22/2019</td>
+											<td>304</td>
+											<td>03/22/2019</td>
+											<td>Turner Dairy Farms, Inc</td>
+											<td>$ 489.00</td>
+											<td>$ 489.00</td>
+											<td>
+												<select class="form-control" id="sel1">
+													<option value="Vendor">Invoice Recieved</option>
+													<option value="Vendor">Processing</option>
+													<option value="Vendor">Payment Completed</option>
+													<option value="Vendor">Payment Rejected</option>
+												</select>
+											</td>
+											<td>-</td>
+											<td>Wrong Invoice</td>
+										</tr>
+										<tr>
+											<td>12048</td>
+											<td>03/21/2019</td>
+											<td>03/25/2019</td>
+											<td>141226</td>
+											<td>03/25/2019</td>
+											<td>SV Temple</td>
+											<td>$ 1487.00</td>
+											<td>$ 1487.00</td>
+											<td>
+												<select class="form-control" id="sel1">
+													<option value="Vendor">Invoice Recieved</option>
+													<option value="Vendor">Processing</option>
+													<option value="Vendor">Payment Completed</option>
+													<option value="Vendor">Payment Rejected</option>
+												</select>
+											</td>
+											<td>-</td>
+											<td>Wrong Invoice</td>
+										</tr>
+										<tr>
+											<td>12049</td>
+											<td>03/01/2019</td>
+											<td>03/04/2019</td>
+											<td>141227</td>
+											<td>03/04/2019</td>
+											<td>Marburger Farm Dairy</td>
+											<td>$ 175.12</td>
+											<td>$ 175.12</td>
+											<td>
+												<select class="form-control" id="sel1">
+													<option value="Vendor">Invoice Recieved</option>
+													<option value="Vendor">Processing</option>
+													<option value="Vendor">Payment Completed</option>
+													<option value="Vendor">Payment Rejected</option>
+												</select>
+											</td>
+											<td>-</td>
+											<td>Wrong Invoice</td>
+										</tr>
+										<tr>
+											<td>12051</td>
+											<td>03/17/2019</td>
+											<td>03/23/2019</td>
+											<td>185237</td>
+											<td>03/23/2019</td>
+											<td>C Bear LLC</td>
+											<td>$ 123.56</td>
+											<td>$ 123.56</td>
+											<td>
+												<select class="form-control" id="sel1">
+													<option value="Vendor">Invoice Recieved</option>
+													<option value="Vendor">Processing</option>
+													<option value="Vendor">Payment Completed</option>
+													<option value="Vendor">Payment Rejected</option>
+												</select>
+											</td>
+											<td>-</td>
+											<td>Wrong Invoice</td>
+										</tr>
+									</tbody>
+								</table>
+								<pagination-controls (pageChange)="p = $event"></pagination-controls>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div> -->

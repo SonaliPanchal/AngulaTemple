@@ -1,0 +1,97 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>	
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">	
+    <div class="list-block">
+        <div class="section-heading">
+            <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left"> Back</i></a></div>
+          <h3>Invoice Module</h3>
+        </div>	
+        <div class="clear"></div>
+      <div class="features-product">
+        <div class="row">
+  <div class="col-md-3">
+  <!-- <label for="username">Date</label>
+            <input placeholder="19/07/2018" size="30" type="text" /> -->
+            <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl date">
+                <input type="text" id="date" class="mdc-text-field__input" #date name="date" [(ngModel)]="dateVal">
+                <div class="mdc-notched-outline">
+                  <div class="mdc-notched-outline__leading"></div>
+                  <div class="mdc-notched-outline__notch">
+                    <label for="date" class="{{date.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Date
+                      </label>
+                  </div>
+                  <div class="mdc-notched-outline__trailing"></div>
+                </div>
+              </div>
+  </div>
+  <div class="col-md-6">
+  </div>
+  <div class="col-md-3">
+  <!-- <label for="username">Invoice #</label>
+            <input placeholder="140123" size="30" type="text" /> -->
+  <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl invoice">
+      <input type="text" id="invoice" class="mdc-text-field__input" #poNum name="invoice" [(ngModel)]="po_no">
+      <div class="mdc-notched-outline">
+        <div class="mdc-notched-outline__leading"></div>
+        <div class="mdc-notched-outline__notch">
+          <label for="invoice" class="{{poNum.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Invoice #
+            </label>
+        </div>
+        <div class="mdc-notched-outline__trailing"></div>
+      </div>
+    </div>
+  </div>
+  <div class="clear"></div>
+  <table class="tableMobilize table-striped">
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Unit</th>
+          <th>Quantity</th>
+          <th>Price</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+					<!-- | paginate:  { itemsPerPage: 1, currentPage: p ,totalItems: tempPriestTrac.length}" -->
+
+        <tr *ngFor="let invoice of inventoryDetail| paginate:  { itemsPerPage: 50, currentPage: p ,totalItems: inventoryDetail.length}">	
+          <td>{{invoice.product}}</td>
+          <td>{{invoice.unit}}</td>
+          <td>{{invoice.quantity}}</td>
+          <td>{{invoice.price | currency}}</td>
+          <td>{{invoice.amount | currency}}</td>
+        </tr>
+        <tr *ngIf="!inventoryDetail?.length">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr> 
+          <td colspan="3">&nbsp;</td>
+          <td>
+            <p><strong>Invoice Total</strong></p>
+          </td>
+          <td>
+            <p><strong>{{getInvoiceTotal() | currency}}</strong></p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    								<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+        </div>
+      </div>
+      
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

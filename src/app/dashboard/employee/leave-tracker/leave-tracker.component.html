@@ -1,0 +1,219 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+	<div class="view view-main">
+		<div class="pages navbar-through toolbar-through">
+			<div data-page="index" class="page">
+				<div class="page-content">
+					<div class="list-block">
+						<div class="section-heading">
+							<div class="left lt"><a class="cursor_pointer" (click)="back()"><i
+										class="fa fa-chevron-left"> Back</i></a></div>
+							<h3>Leave Tracker</h3>
+						</div>
+						<div class="clear"></div>
+						<div class="features-product">
+							<p>Filter by :</p>
+						</div>
+						<table class="tableMobilize table-striped">
+							<thead>
+								<tr>
+									<td>
+
+										<div class="mdc-select mdc-select--outlined new-pur-contorl e_id">
+											<i class="material-icons position_detect">
+												arrow_drop_down
+											</i>
+											<select class="mdc-select__native-control" name="priest_id" #priest_id
+												[(ngModel)]="dataObj.priest_id"
+												(change)="ApplyFilter($event.target.value,'priest_id')">
+												<option value="" disabled selected></option>
+												<option *ngFor="let employee of leaveTrackerData"
+													[value]="employee.priest_id">{{employee.priest_id}}</option>
+
+											</select>
+											<div class="mdc-notched-outline">
+												<div class="mdc-notched-outline__leading"></div>
+												<div class="mdc-notched-outline__notch">
+													<label
+														class="{{dataObj.priest_id?'mdc-floating-label--float-above':'mdc-floating-label'}}">Emp
+														ID</label>
+												</div>
+												<div class="mdc-notched-outline__trailing"></div>
+											</div>
+										</div>
+									</td>
+									<td>
+
+										<div class="mdc-select mdc-select--outlined new-pur-contorl e_name">
+											<i class="material-icons position_detect">
+												arrow_drop_down
+											</i>
+											<select class="mdc-select__native-control" #priest_name='ngModel'
+												name="priest_name" [(ngModel)]="dataObj.priest_name"
+												(change)="ApplyFilter($event.target.value,'priest_name')">
+												<option value="" disabled selected></option>
+												<option *ngFor="let employee of leaveTrackerData"
+													[value]="employee.priest_name">{{employee.priest_name}}</option>
+
+											</select>
+											<div class="mdc-notched-outline">
+												<div class="mdc-notched-outline__leading"></div>
+												<div class="mdc-notched-outline__notch">
+													<label
+														class="{{dataObj.priest_name?'mdc-floating-label--float-above':' mdc-floating-label'}}">Emp
+														Name</label>
+												</div>
+												<div class="mdc-notched-outline__trailing"></div>
+											</div>
+										</div>
+									</td>
+									<td>
+
+										<div class="mdc-select mdc-select--outlined new-pur-contorl l_type">
+											<i class="material-icons position_detect">
+												arrow_drop_down
+											</i>
+											<select class="mdc-select__native-control" #leave_type_name='ngModel'
+												name="leave_type_name" [(ngModel)]="dataObj.leave_type_name"
+												(change)="ApplyFilter($event.target.value,'leave_type_name')">
+												<option value="" disabled selected></option>
+												<option *ngFor="let leaveType of leaveTrackerData"
+													[value]="leaveType.leave_type_name">{{leaveType.leave_type_name}}
+												</option>
+
+											</select>
+											<div class="mdc-notched-outline">
+												<div class="mdc-notched-outline__leading"></div>
+												<div class="mdc-notched-outline__notch">
+													<label
+														class="{{dataObj.leave_type_name?'mdc-floating-label--float-above':'mdc-floating-label'}} ">Leave
+														Type</label>
+												</div>
+												<div class="mdc-notched-outline__trailing"></div>
+											</div>
+										</div>
+									</td>
+									<td>
+
+										<div class="mdc-select mdc-select--outlined new-pur-contorl s_d">
+											<i class="material-icons position_detect">
+												arrow_drop_down
+											</i>
+											<select class="mdc-select__native-control" #from_date='ngModel'
+												name="from_date" [(ngModel)]="dataObj.from_date"
+												(change)="ApplyFilter($event.target.value,'from_date')">
+												<option value="" disabled selected></option>
+												<option *ngFor="let leaveType of leaveTrackerData"
+													[value]="leaveType.from_date">{{leaveType.from_date}}</option>
+
+											</select>
+											<div class="mdc-notched-outline">
+												<div class="mdc-notched-outline__leading"></div>
+												<div class="mdc-notched-outline__notch">
+													<label
+														class="{{dataObj.from_date?'mdc-floating-label--float-above':'mdc-floating-label'}} ">Date
+														Start</label>
+												</div>
+												<div class="mdc-notched-outline__trailing"></div>
+											</div>
+										</div>
+
+									</td>
+									<td>
+
+										<div class="mdc-select mdc-select--outlined new-pur-contorl e_d">
+											<i class="material-icons position_detect">
+												arrow_drop_down
+											</i>
+											<select class="mdc-select__native-control" #to_date='ngModel' name="to_date"
+												[(ngModel)]="dataObj.to_date"
+												(change)="ApplyFilter($event.target.value,'to_date')">
+												<option value="" disabled selected></option>
+												<option *ngFor="let leaveType of leaveTrackerData"
+													[value]="leaveType.to_date">{{leaveType.to_date}}</option>
+
+											</select>
+											<div class="mdc-notched-outline">
+												<div class="mdc-notched-outline__leading"></div>
+												<div class="mdc-notched-outline__notch">
+													<label
+														class="{{dataObj.to_date?'mdc-floating-label--float-above':'mdc-floating-label'}} ">Date
+														End</label>
+												</div>
+												<div class="mdc-notched-outline__trailing"></div>
+											</div>
+										</div>
+
+									</td>
+									<td>
+
+										<div class="mdc-select mdc-select--outlined new-pur-contorl l_cover">
+											<i class="material-icons position_detect">
+												arrow_drop_down
+											</i>
+											<select class="mdc-select__native-control" #LeaveCoverage
+												name="LeaveCoverage" [(ngModel)]="dataObj.leave_coverage">
+												<option value="" disabled selected></option>
+												<option value="LeaveCoverage">-</option>
+												<option value="LeaveCoverage">-</option>
+
+											</select>
+											<div class="mdc-notched-outline">
+												<div class="mdc-notched-outline__leading"></div>
+												<div class="mdc-notched-outline__notch">
+													<label
+														class="{{dataObj.leave_coverage?'mdc-floating-label--float-above':'mdc-floating-label'}}  ">Leave
+														Coverage</label>
+												</div>
+												<div class="mdc-notched-outline__trailing"></div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr>
+									<th>Emp ID</th>
+									<th>Emp Name</th>
+									<th>Leave Type</th>
+									<th>Date Start</th>
+									<th>Date End</th>
+									<th>Leave Coverage</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr *ngIf="!tempLeaveData?.length ">
+									<td>Record not found</td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+									<td></td>
+								</tr>
+								<tr
+									*ngFor="let record of tempLeaveData | paginate:  { itemsPerPage: 50, currentPage: p ,totalItems: tempLeaveData.length}">
+									<td>{{record.priest_id}}</td>
+									<td>{{record.priest_name}}</td>
+									<td>{{record.leave_type_name}}</td>
+									<td>{{record.from_date}}</td>
+									<td>{{record.to_date}}</td>
+									<td>{{record.leave_coverage}}</td>
+								</tr>
+
+
+							</tbody>
+						</table>
+						<!-- (pageChange)="pageChanged($event)" -->
+						<pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+						<div style="text-align:center; width:100%;">
+							<button class="mdc-button mdc-button--raised btn2"
+								[routerLink]="['/employee/apply_leave']"><a style="color:#fff!important;">Create new
+									Leave</a></button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

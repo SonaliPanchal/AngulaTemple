@@ -1,0 +1,138 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+              <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left">
+                    Back</i></a></div>
+              <h3>Inventory</h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+              <div class="row">
+                <div class="mdc-layout-grid">
+                  <div class="mdc-layout-grid__inner">
+                    <div class="mdc-layout-grid__cell--span-12">
+                      <div class="mdc-layout-grid__inner">
+                        <div class="mdc-layout-grid__cell--span-3">
+                          <div class="mdc-select mdc-select--outlined new-pur-contorl ">
+                            <!-- <i class="mdc-select__dropdown-icon"></i> -->
+                            <i class="material-icons position_detect">
+                              arrow_drop_down
+                            </i>
+                            <select class="mdc-select__native-control" #Deity name="Deity" [(ngModel)]="selectedDeity"
+                              (change)="selectDeity($event.target.value)">
+                              <option value="" disabled selected></option>
+                              <option *ngFor="let deity of alldeity " [value]="deity.deity_id">{{deity.deity_name}}
+                              </option>
+                              <!-- <option value="Check">Padmavathi</option>
+                                      <option value="Check">Andal</option> -->
+                            </select>
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__notch">
+                                <label
+                                  class="{{Deity.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Deity</label>
+                              </div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-6">
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-3">
+                          <angular2csv [data]="importFile" filename="inventory.csv" class="csvbtn" [options]="options"
+                            *ngIf="allInventory?.length">
+                            <button class="mdc-button mdc-button--raised colo-white cursor_pointer btn2">Import</button>
+                          </angular2csv>
+
+                          <button class="mdc-button mdc-button--raised colo-white cursor_pointer btn2">Import</button>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+
+                <!-- <div class="col-md-3">
+                  <label>Deity :</label>
+                  <div><select name="Kalalaya" style="width:100%;">
+                      <option value="Check">Sri Venkateswara Moolavar</option>
+                      <option value="Check">Padmavathi</option>
+                      <option value="Check">Andal</option>
+                    </select>
+                  </div>
+                  
+                </div>
+                <div class="col-md-6">
+                  &nbsp;
+                </div>
+                <div class="col-md-3">
+                  <div>
+                    <input style="margin-top:2px!important;" class="btn2" type="submit" value="Import">
+                  </div>
+
+                </div> -->
+                <div class="clearfix"></div>
+              </div>
+
+              <table class="tableMobilize table-striped">
+                <thead>
+                  <tr>
+                    <th>Item ID</th>
+                    <th>Item Description</th>
+                    <th>Weight</th>
+                    <th>S.O Number</th>
+                    <th>Verified</th>
+                    <th>Verified Date</th>
+                    <th>Verified by</th>
+                    <th>Comments</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr
+                    *ngFor="let inventory of allInventory |  paginate:  { itemsPerPage: 50, currentPage: p ,totalItems: inventory?.length}; let i = index;">
+                    <td>{{inventory.item_id}}</td>
+                    <td>{{inventory.item_description}}</td>
+                    <td>{{inventory.weight}}</td>
+                    <td>{{inventory.so_number}}</td>
+                    <td>
+                      <input type="checkbox" name="ticked" value="ticked" [checked]="inventory.isVerified" [disabled]="true">
+                      <input style="width:78px; margin:0px; padding:7px 10px;" class="btn2" type="button"
+                        (click)="printRow(inventory)" value="Print" [disabled]="!inventory.isVerified">
+                    </td>
+                    <td>{{inventory.verified_date}}</td>
+                    <td>{{inventory.verified_by}}</td>
+                    <td>{{inventory.comments}}</td>
+                  </tr>
+                  <tr *ngIf="!allInventory?.length">
+                    <td>Record not found</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+
+                  </tr>
+
+                </tbody>
+              </table>
+              <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

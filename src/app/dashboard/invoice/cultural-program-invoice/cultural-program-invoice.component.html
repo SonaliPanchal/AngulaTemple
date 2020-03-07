@@ -1,0 +1,354 @@
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+              <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left">
+                    Back</i></a></div>
+              <h3>Cultural Program Payments</h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+              <div class="row">
+                <div class="mdc-layout-grid">
+                    <form #formData="ngForm">
+                  <div class="mdc-layout-grid__inner">
+                   <!-- <form #formData="ngForm"> -->
+                    <div class="mdc-layout-grid__cell--span-12">
+                      <div class="mdc-layout-grid__inner">
+                        <div class="mdc-layout-grid__cell--span-3">
+                          <div class="mdc-select mdc-select--outlined new-pur-contorl c_p">
+                            <i class="material-icons position_detect">
+                              arrow_drop_down
+                            </i>
+                            <select class="mdc-select__native-control" name="check_payable_to" [(ngModel)]="dataObj.check_payable_to" required>
+                              <option value="" disabled selected></option>
+                              <option *ngFor="let payment of allCheckPayable" [value]="payment.check_payable_id">{{payment.check_payable_name}}</option>
+                              <!-- <option value="Check">Kalalaya</option>
+                              <option value="Check">Kalalaya</option> -->
+                            </select>
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__notch">
+                                <label class="{{dataObj.check_payable_to?'mdc-floating-label--float-above':'mdc-floating-label'}}">Check Payable to</label>
+                              </div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div><br><br>
+                          <!-- <div>Check Number	  :</div>  -->
+                          <!-- <input type="text" name="usrname" placeholder="5481"> -->
+                          <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl check_no">
+                            <input type="text" id="tf-outlined63" required class="mdc-text-field__input"  name="check_number" [(ngModel)]="dataObj.check_number">
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__notch">
+                                <label for="tf-outlined63" class="{{dataObj.check_number?'mdc-floating-label--float-above':'mdc-floating-label'}}">Check Number</label>
+                              </div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div><br>
+
+                          <!-- <div>Method of Payment: -->
+                          <!-- <select name="cars">
+              <option value="Check">Check</option>
+              <option value="Online">Online</option>
+              </select> -->
+              <br>
+                          <div class="mdc-select mdc-select--outlined new-pur-contorl m_o_p">
+                            <i class="material-icons position_detect">
+                              arrow_drop_down
+                            </i>
+                            <select class="mdc-select__native-control" required name="payment_mode_id" [(ngModel)]="dataObj.payment_mode_id">
+                              <option value="" disabled selected></option>
+                              <option *ngFor="let method of allPaymentMode" [value]="method.id">{{method.payment_name}}</option>
+                              <!-- <option value="Online">Online</option> -->
+                            </select>
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__notch">
+                                <label class="{{dataObj.payment_mode_id?'mdc-floating-label--float-above':'mdc-floating-label'}}">Method of Payment</label>
+                              </div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-6">
+                          <div>
+                            <!-- Committee/Project: -->
+                            <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl committee_project">
+                              <input type="text" id="tf-outlined_" required name="committee"  [(ngModel)]="dataObj.committee" class="mdc-text-field__input">
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="tf-outlined_" class="{{dataObj.committee?'mdc-floating-label--float-above':'mdc-floating-label'}}">Committee/Project</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div><br>
+                            <!-- Approval Date and meeting number of Board, EC or Officers : -->
+                            <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl ApprovalDate">
+                              <input type="text" id="tf-outlined1" required class="mdc-text-field__input" name="approval_ec_bod" [(ngModel)]="dataObj.approval_ec_bod">
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="tf-outlined1" class="{{dataObj.approval_ec_bod?'mdc-floating-label--float-above':'mdc-floating-label'}}">Approval Date and meeting number
+                                    of Board,
+                                    EC or Officers</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-3">
+                          <div class="office">
+                            <span class="office-use">For Office Use only</span>
+                          </div>
+                          <div>
+                            <!-- Date payment due :  -->
+                            <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl date_due">
+                              <input type="text" [max]="maxDate" required [matDatepicker]="picker" #date id="tf-outlined2"
+                                class="mdc-text-field__input" name="date_payment_due" [(ngModel)]="dataObj.date_payment_due">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker color="primary"></mat-datepicker>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="tf-outlined2"
+                                    class="{{date.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Date
+                                    payment
+                                    due</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div><br>
+                            <!-- Invoice Number	  :  -->
+                            <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl invoice_no">
+                              <input type="text" id="tf-outlined4" required class="mdc-text-field__input" name="invoice_no" [(ngModel)]="dataObj.invoice_no">
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="tf-outlined4" class="{{dataObj.invoice_no?'mdc-floating-label--float-above':'mdc-floating-label'}}">Invoice Number</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div><br>
+                            <!-- Date of mailing  :   -->
+                            <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl date">
+                              <input type="text" [max]="maxDate" required [matDatepicker]="picker1" #date3 id="tf-outlined5"
+                                class="mdc-text-field__input" name="date_of_mailing" [(ngModel)]="dataObj.date_of_mailing">
+                              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                              <mat-datepicker #picker1 color="primary"></mat-datepicker>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="tf-outlined5"
+                                    class="{{date3.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Date
+                                    of
+                                    mailing</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell--span-12">
+                      <div class="mdc-layout-grid__inner">
+                        <div class="mdc-layout-grid__cell--span-3">
+                          <h4>Signature and Dates</h4>
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-6">
+
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-3">
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell--span-12">
+                      <div class="mdc-layout-grid__inner">
+                        <div class="mdc-layout-grid__cell--span-3">
+                          <div class="mdc-select mdc-select--outlined new-pur-contorl s_d">
+                            <i class="material-icons position_detect">
+                              arrow_drop_down
+                            </i>
+                            <select class="mdc-select__native-control" required name="officer1_sign" [(ngModel)]="dataObj.officer1_sign">
+                              <option value="" disabled selected></option>
+                              <option *ngFor="let officers of allOfficers" [value]="officers.position_name">{{officers.position_name}}</option>
+                              <!-- <option value="Supervisor">Supervisor</option>
+                              <option value="Manager">Operations Manager</option> -->
+                            </select>
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__notch">
+                                <label class="{{dataObj.officer1_sign?'mdc-floating-label--float-above':'mdc-floating-label'}}">Select Signature Option</label>
+                              </div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-6">
+                          <p>Signature</p>
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-3">
+                          <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl Signature">
+                            <!-- <input type="text" id="tf-outlined__2" class="mdc-text-field__input"> -->
+                            <input type="text" [max]="maxDate" required [matDatepicker]="picker_sign" #date_sign id="date_sign"
+                                class="mdc-text-field__input" name="officer1_sign_date" [(ngModel)]="dataObj.officer1_sign_date">
+                              <mat-datepicker-toggle matSuffix [for]="picker_sign"></mat-datepicker-toggle>
+                              <mat-datepicker #picker_sign color="primary"></mat-datepicker>
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__notch">
+                                <label for="date_sign" class="{{date_sign.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Signature Date</label>
+                              </div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell--span-12">
+                      <div class="mdc-layout-grid__inner">
+                        <div class="mdc-layout-grid__cell--span-3">
+                          <div class="mdc-select mdc-select--outlined new-pur-contorl sign">
+                            <i class="material-icons position_detect">
+                              arrow_drop_down
+                            </i>
+                            <select class="mdc-select__native-control" required name="officer2_sign" [(ngModel)]="dataObj.officer2_sign">
+                              <option value="" disabled selected></option>
+                              <option *ngFor="let officers of allOfficers" [value]="officers.position_name">{{officers.position_name}}</option>
+
+                            </select>
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__notch">
+                              </div>
+                              <label class="{{dataObj.officer2_sign?'mdc-floating-label--float-above':'mdc-floating-label'}}">Select Signature Option</label>
+                              </div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-6">
+                          <p>Signature</p>
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-3">
+                          <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl Signature1">
+                            <!-- <input type="text" id="tf-outlined___" class="mdc-text-field__input"> -->
+                            <input type="text" [max]="maxDate" required [matDatepicker]="picker_sign1" #date_sign1 id="date_sign1"
+                                class="mdc-text-field__input" name="officer2_sign_date" [(ngModel)]="dataObj.officer2_sign_date">
+                              <mat-datepicker-toggle matSuffix [for]="picker_sign1"></mat-datepicker-toggle>
+                              <mat-datepicker #picker_sign1 color="primary"></mat-datepicker>
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__notch">
+                                <label for="date_sign1" class="{{date_sign1.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Signature Date</label>
+                              </div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    <!-- </form> -->
+                    </div>
+                    </form>
+                    <div class="mdc-layout-grid__cell--span-12">
+                      <div class="mdc-layout-grid__inner">
+                        <div class="mdc-layout-grid__cell--span-3">
+                          <p>Final Approval of Payment By Secretary</p>
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-6">
+                          <p>Signature</p>
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-3">
+                          <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl Signature2">
+                            <!-- <input type="text" id="tf-outlined__2_" class="mdc-text-field__input"> -->
+                            <input type="text" [max]="maxDate" required [matDatepicker]="picker_sign2" #date_sign2 id="date_sign2"
+                            class="mdc-text-field__input" name="officer3_sign_date" [(ngModel)]="dataObj.officer3_sign_date">
+                          <mat-datepicker-toggle matSuffix [for]="picker_sign2"></mat-datepicker-toggle>
+                          <mat-datepicker #picker_sign2 color="primary"></mat-datepicker>
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__notch">
+                                <label for="date_sign2" class="{{date_sign2.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Signature Date</label>
+                              </div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                </div> 
+              </div>
+
+              <table class="tableMobilize table-striped">
+                <thead>
+                  <tr>
+                    <th>Expense Code/Committee Code</th>
+                    <th>Amount</th>
+                    <th>Particulars</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <select name="cars" class="selctClass" name="code_id" [(ngModel)]="dataObj.code_id">
+                        <option *ngFor="let code of allCodes" [value]="code.code_id">{{code.code_name}}</option>
+    
+                      </select>
+                    </td>
+                    <td><input type="text" name="amount" #amount pattern="[0-9]+"  placeholder="enter amount" [(ngModel)]="dataObj.amount"></td>
+                    <td><input type="text" name="particulars"   placeholder="enter particulars" [(ngModel)]="dataObj.particulars"></td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                    <td>&nbsp;</td>
+                  </tr>
+                  <tr>
+                    <td>Grand Total</td>
+                    <td>{{grandTotal(amount.value) | currency}}</td>
+                    <td>{{convertToWord(amount.value)}}</td>
+                  </tr>
+                  <tr>
+                    <td colspan="3">
+                      <button style="width:160px; float:right;" class="mdc-button mdc-button--raised button button-big" (click)="postCultural()" [disabled]="!formData.valid">Submit</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <div class="clearfix"></div>
+              <div>
+                <p style="padding:24px 10px; float:right;"><strong>Prepared by : </strong>Rajasekhar Gudapati Mar.28,
+                  2019
+                </p>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    <!-- </div> -->
+  </div>
+<!-- </div> -->

@@ -1,0 +1,96 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block add-vender">
+            <div class="section-heading">
+              <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left">
+                    Back</i></a></div>
+              <h3>Block Vendor</h3>
+            </div>
+            <div class="clear"></div>
+            <table class="tableMobilize table-striped" style="margin-top:38px;">
+              <thead>
+                <tr>
+                  <th>Vendor Name</th>
+                  <th>Address-Line1</th>
+                  <th>Address-Line2</th>
+                  <th>State</th>
+                  <th>City</th>
+                  <th>Country</th>
+                  <th>Zip</th>
+                  <th>Status</th>
+                  <!-- <th>Action</th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="!allVendore.length">
+                  <td>Record not found</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr *ngFor="let vendorList of allVendore | paginate: { 
+                  itemsPerPage: 50,
+                  currentPage: p,
+                  totalItems: allVendore.length }">
+                  <td>{{vendorList.vendor_name}}</td>
+                  <td>{{vendorList.address_line1}}</td>
+                  <td>{{vendorList.address_line2}}</td>
+                  <td>{{vendorList.state}}</td>
+                  <td>{{vendorList.city}}</td>
+                  <td>{{vendorList.country}}</td>
+                  <td>{{vendorList.zip}}</td>
+                  <!-- <td><a>{{vendorList.status}}</a></td> -->
+                  <td><a class="cursor_pointer {{vendorList.status=='2'?'event-none':''}}" (click)="confirmBlock(vendorList.vendor_id)">{{vendorList.status=="2"?'Blocked':'Block'}}</a></td>
+                </tr>
+
+                <!-- <tr>
+                  <td colspan="6">&nbsp;</td> -->
+                  <!-- <td><button style="width:100px;" class="mdc-button mdc-button--raised button button-big">Save</button> -->
+                  <!-- </td> -->
+                  <!-- <td>&nbsp;</td>
+                </tr> -->
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mdc-dialog" id="blockVendor" role="alertdialog" aria-modal="true" aria-labelledby="my-dialog-title"
+  aria-describedby="my-dialog-content">
+  <div class="mdc-dialog__container">
+    <div class="mdc-dialog__surface">
+      <!-- Title cannot contain leading whitespace due to mdc-typography-baseline-top() -->
+      <h2 class="mdc-dialog__title" id="my-dialog-title">
+        Block vendor 
+        <i class="material-icons">
+          block
+          </i>
+      </h2>
+      <div class="mdc-dialog__content" id="my-dialog-content">
+      <span class="body_dialog"> Want to Block this vendor?</span>
+      </div>
+      <footer class="mdc-dialog__actions">
+        <button type="button" class="mdc-button mdc-dialog__button cancel-button" data-mdc-dialog-action="close" (click)="Cancel()">
+          <span class="mdc-button__label">Cancel</span>
+        </button>
+        <button type="button" class="mdc-button mdc-dialog__button confirm-button" data-mdc-dialog-action="accept" (click)="confirm()">
+          <span class="mdc-button__label">Confirm</span>
+        </button>
+      </footer>
+    </div>
+  </div>
+  <div class="mdc-dialog__scrim"></div>
+</div>

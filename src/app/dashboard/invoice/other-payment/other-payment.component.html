@@ -1,0 +1,243 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+              <div class="left lt"><a class="cursor_event cursor_pointer" (click)="back()"><i
+                    class="fa fa-chevron-left"> Back</i></a></div>
+              <h3>Non PO Invoice</h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+              <div class="row">
+<form #formVal="ngForm">
+                <div class="mdc-layout-grid">
+                  <div class="mdc-layout-grid__inner">
+
+                    <div class="mdc-layout-grid__cell--span-12">
+                      <div class="mdc-layout-grid__inner">
+                        <div class="mdc-layout-grid__cell--span-3">
+                          <!-- <label>Invoice Number:</label>
+                      <input type="text" name="usrname" placeholder="15782"> -->
+                          <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl invoice_no">
+                            <input type="text" id="tf-outlined1" required class="mdc-text-field__input" pattern='^[0-9]+$' name="invoiceNo" #invoiceNo [(ngModel)]="NOpurchase.invoice_number">
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__notch">
+                                <label for="tf-outlined1" class="{{invoiceNo.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Invoice Number
+                                </label>
+                              </div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div><br><br>
+                          <div class="mdc-select mdc-select--outlined new-pur-contorl p_t">
+                            <i class="material-icons position_detect">
+                              arrow_drop_down
+                            </i>
+                            <select class="mdc-select__native-control"  name="payment_to"  required #payment_to [(ngModel)]="NOpurchase.payment_to">
+                              <option value="" disabled selected></option>
+                              <option *ngFor="let payable of allCheckPayable" [value]="payable.check_payable_id">
+                                {{payable.check_payable_name}}</option>
+                            </select>
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__notch">
+                                <label class="{{payment_to.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Payment to</label>
+                              </div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div><br><br>
+                          <!-- <label>Mode of Payment :</label>
+                      <div><select name="Kalalaya" style="width:100%;">
+                        <option value="Check">Cheque</option>
+                        <option value="Check">Online</option>
+                        </select>
+                        </div>  -->
+                          <div class="mdc-select mdc-select--outlined new-pur-contorl m_o_p">
+                            <i class="material-icons position_detect">
+                              arrow_drop_down
+                            </i>
+                            <select class="mdc-select__native-control" name="mode_of_payment" required #mode_of_payment [(ngModel)]="NOpurchase.mode_of_payment">
+                              <option value="" disabled selected></option>
+                              <option *ngFor="let method of allPaymentMode" [value]="method.id">{{method.payment_name}}
+                              </option>
+                              <!-- <option value="Online">Online</option> -->
+                            </select>
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__notch">
+                                <label class="{{mode_of_payment.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Method of Payment</label>
+                              </div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div><br><br>
+                          <!-- <label>Approval EC/BoD :</label>		  
+                      <input type="text" name="usrname" placeholder="BOD-10202019"> -->
+                          <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl approval">
+                            <input type="text" id="Approval" class="mdc-text-field__input" required name="approval_ec_bod" #approval_ec_bod [(ngModel)]="NOpurchase.approval_ec_bod">
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__notch">
+                                <label for="Approval" class="{{approval_ec_bod.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Approval EC/BoD
+                                </label>
+                              </div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div><br><br>
+                          <div class="mdc-text-field mdc-text-field--textarea mdc-text-field--no-label textArea">
+                            <textarea class="mdc-text-field__input" rows="8" cols="40" aria-label="Label" name="invoice_description" #invoice_description [(ngModel)]="NOpurchase.invoice_description"></textarea>
+                            <div class="mdc-notched-outline">
+                              <div class="mdc-notched-outline__leading"></div>
+                              <div class="mdc-notched-outline__trailing"></div>
+                            </div>
+                          </div>
+                          <!-- <textarea rows="4" cols="50">
+                      Approval to noot to exceed $100 for replacing street lights
+                      </textarea><br> -->
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-6">
+                        </div>
+                        <div class="mdc-layout-grid__cell--span-3">
+                          <div>
+                            <!-- <label>Invoice Date :</label>
+                              <input type="text" name="usrname" placeholder="14/06/2019"> -->
+                            <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl invoice_date">
+                              <input type="text" [max]="maxDate" [matDatepicker]="picker" required [max]="maxDate" #date id="date" name="invoice_date"  [(ngModel)]="NOpurchase.invoice_date"
+                                class="mdc-text-field__input">
+                              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                              <mat-datepicker #picker color="primary"></mat-datepicker>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="date"
+                                    class="{{date.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Invoice
+                                    Date
+                                  </label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                            <br><br>
+                            <!-- <label>Payment due Date :</label>
+                              <input type="text" name="usrname" placeholder="18/06/2019"> -->
+                            <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl p_d_d">
+                              <input type="text" [max]="maxDate" [matDatepicker]="picker1" required #date1 id="date1" [max]="maxDate"
+                                class="mdc-text-field__input" name="payment_due_date"  [(ngModel)]="NOpurchase.payment_due_date">
+                              <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                              <mat-datepicker #picker1 color="primary"></mat-datepicker>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="date1"
+                                    class="{{date1.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Payment
+                                    due Date
+                                  </label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div><br><br>
+                            <!-- <label>Date of Mailing :</label> 
+                              <input type="text" name="usrname" placeholder="17/06/2019"> -->
+                            <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl d_o_m">
+                              <input type="text" [max]="maxDate" [matDatepicker]="picker2" required #date2 id="date2" [max]="maxDate"
+                                class="mdc-text-field__input" name="date_of_mailing"  [(ngModel)]="NOpurchase.date_of_mailing">
+                              <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                              <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="date2"
+                                    class="{{date2.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Date
+                                    of Mailing
+                                  </label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div><br><br>
+                        
+                            <div class="mdc-select mdc-select--outlined new-pur-contorl cost_center">
+                              <i class="material-icons position_detect">
+                                arrow_drop_down
+                              </i>
+                              <select class="mdc-select__native-control" name="cost_center" required #cost_center  [(ngModel)]="NOpurchase.cost_center">
+                                <option value="" disabled selected></option>
+                                <option *ngFor="let costCenter of allCostCenters" [value]="costCenter.cost_center_id">
+                                  {{costCenter.cost_center_name}}</option>
+                                <!-- <option value="Online">Online</option> -->
+                              </select>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label class="{{cost_center.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Cost Center</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+                <div class="clearfix"></div>
+              </div>
+
+              <table class="tableMobilize table-striped">
+                <thead>
+                  <tr>
+                    <th>Expense Code</th>
+                    <th>Amount</th>
+                    <th>Particulars</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr *ngFor="let table of tableData">
+                    <td><select name="Kalalaya" class="otherPayment" name="code_id" #code_id  [(ngModel)]="table.code_id">
+                        <option *ngFor="let code of allCodes" [value]="code.code_id">{{code.code_name}}</option>
+                      </select>
+                    </td>
+                      <td>
+                        <input type="text" name="amount" pattern='^[0-9]+$' placeholder="amount" [(ngModel)]="table.amount">
+                        <!-- {{NOpurchase.amount}}</td> -->
+                    <td>
+                        <input type="text" name="particulars" placeholder="particulars" [(ngModel)]="table.particulars">
+                      <!-- {{NOpurchase.particulars}}</td> -->
+                  </tr>
+                  <tr>
+                    <td>Total</td>
+                    <td>
+                        <!-- <input type="text" name="total" [(ngModel)]="NOpurchase.total"> -->
+                      {{getTotal()?getTotal():0}}
+                    </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colspan="2">&nbsp;</td>
+                    <td><button style="margin:0px!important;" class="mdc-button mdc-button--raised btn2"
+                      (click)="addRow()">Add</button></td>
+                        <!-- (click)="addRow()" -->
+                  </tr>
+                  <tr>
+                    <td colspan="2">&nbsp;</td>
+                    <td><strong>Preapared Date :</strong> {{preparedDate | date:'dd/MM/yyyy'}} </td>
+                  </tr>
+                </tbody>
+              </table>
+
+
+              <div class="clearfix"></div>
+              <button  class="mdc-button mdc-button--raised btn2"
+                      (click)="addNOpurchase()" [disabled]="!formVal.valid || !tableData.length">Save</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

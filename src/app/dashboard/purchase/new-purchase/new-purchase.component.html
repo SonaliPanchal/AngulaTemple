@@ -1,0 +1,445 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+              <div class="left lt"><a class="cursor_pointer" (click)='back()'><i class="fa fa-chevron-left">
+                    Back</i></a></div>
+              <h3>{{po_id?'Purchase Order Detail':'New Purchase Order'}}</h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+              <div class="row">
+                <form #formVal="ngForm">
+                  <div class="mdc-layout-grid">
+                    <div class="mdc-layout-grid__inner">
+                      <div class="mdc-layout-grid__cell--span-12">
+                        <div class="mdc-layout-grid__inner">
+                          <div class="mdc-layout-grid__cell--span-3">
+
+                            <div class="mdc-select mdc-select--outlined new-pur-contorl Vendor">
+                              <i class="material-icons position_detect">
+                                arrow_drop_down
+                              </i>
+                              <select class="mdc-select__native-control" #vendor_ name="vendor"
+                                [(ngModel)]="poData.vendor_id" required [disabled]="role!=1"
+                                (change)="getTemplates($event.target.value)">
+                                <option value="" disabled selected></option>
+                                <option *ngFor="let venders of allVenders" [value]="venders.vendor_id">
+                                  {{venders.vendor_name}}
+                                </option>
+
+                              </select>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label
+                                    class="{{vendor_.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Vendor</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                            <!-- </p> -->
+                          </div>
+                          <div class="mdc-layout-grid__cell--span-3">
+
+                            <div class="mdc-select mdc-select--outlined new-pur-contorl Template">
+                              <!-- <i class="mdc-select__dropdown-icon"></i> -->
+                              <i class="material-icons position_detect">
+                                arrow_drop_down
+                              </i>
+                              <select class="mdc-select__native-control" name="template" #template_
+                                [(ngModel)]="poData.template_id" required [disabled]="role!=1"
+                                title="Please select a vendore for template" (change)="getAllItems($event.target.value)"
+                                [disabled]="!allTemplates.length">
+                                <option value="" disabled selected></option>
+                               
+                                <option *ngFor="let template of allTemplates" [value]="template.template_id">
+                                  {{template.template_name}}
+                                </option>
+
+                              </select>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label
+                                    class="{{poData.template_id?'mdc-floating-label--float-above':'mdc-floating-label'}}">Template</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mdc-layout-grid__cell--span-3">
+                            <!-- PO Number :
+                              <input type="text" name="usrname" placeholder="140123"> -->
+                            <!-- (change)="poEntry(po_.value)" -->
+                            <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl">
+                              <input type="text" id="tf-outlined" class="mdc-text-field__input"
+                                title="PO number will be auto generated" name="po" #po_ [disabled]="true"
+                                [(ngModel)]="poData.po_no" [disabled]="role!=1">
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label for="tf-outlined"
+                                    class="{{po_.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">PO
+                                    Number</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+
+                          </div>
+                          <!-- <div class="mdc-layout-grid__cell--span-3"></div> -->
+                        </div>
+                      </div>
+                      <div class="mdc-layout-grid__cell--span-12">
+                        <div class="mdc-layout-grid__inner">
+                          <div class="mdc-layout-grid__cell--span-3">
+
+                            <div class="mdc-select mdc-select--outlined new-pur-contorl Delivery">
+                              <!-- <i class="mdc-select__dropdown-icon"></i> -->
+                              <i class="material-icons position_detect">
+                                arrow_drop_down
+                              </i>
+                              <select class="mdc-select__native-control" #delivery name="deliery_to"
+                                [(ngModel)]="poData.delivery_id" required [disabled]="role!=1">
+                                <option value="" disabled selected></option>
+                                <option [value]="delivery.delivery_id" *ngFor="let delivery of allDeliver">
+                                  {{delivery.delivery_name}}</option>
+                                <!-- <option value="Vatsala Kitchen">Vatsala Kitchen</option> -->
+                              </select>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label
+                                    class="{{delivery.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Delivery
+                                    To</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="mdc-layout-grid__cell--span-3">
+
+                            <div class="mdc-select mdc-select--outlined new-pur-contorl Expense">
+                              <!-- <i class="mdc-select__dropdown-icon"></i> -->
+                              <i class="material-icons position_detect">
+                                arrow_drop_down
+                              </i>
+                              <select class="mdc-select__native-control" name="code" #code_ [(ngModel)]="poData.code_id"
+                                required [disabled]="role!=1">
+                                <option value="" disabled selected></option>
+                                <option *ngFor="let code of allCodes" [value]="code.code_id">
+                                  {{code.code_name}}
+                                </option>
+
+                              </select>
+                              <div class="mdc-notched-outline">
+                                <div class="mdc-notched-outline__leading"></div>
+                                <div class="mdc-notched-outline__notch">
+                                  <label
+                                    class="{{code_.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Expense
+                                    Code/Committee Code</label>
+                                </div>
+                                <div class="mdc-notched-outline__trailing"></div>
+                              </div>
+                            </div>
+                          </div>
+
+
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell--span-12">
+                      <div class="mdc-layout-grid__inner">
+                        <div class="mdc-layout-grid__cell--span-6"></div>
+                        <div class="mdc-layout-grid__cell--span-6">
+
+                          <div class="progress">
+                            <div class="circle {{statusCondition.draft}}">
+                              <span class="label">{{'&#10003;'}}</span><br>&nbsp;
+                              <span class="title">Draft</span>
+                            </div>
+                            <span class="bar {{statusCondition.draft}}"></span>
+                            <div class="circle {{statusCondition.submitted}}">
+                              <span class="label">{{'&#10003;'}}</span><br>
+                              <span class="title">Submitted</span>
+                            </div>
+                            <span class="bar {{statusCondition.submitted}}"></span>
+                            <div class="circle {{statusCondition.approved_1_by}}">
+                              <span class="label">{{'&#10003;'}}</span>
+                              <span class="title">Approved -1</span>
+                            </div>
+                            <span class="bar {{statusCondition.approved_1_by}}"></span>
+                            <div class="circle {{statusCondition.approved_2_by}}">
+                              <span class="label">{{'&#10003;'}}</span>
+                              <span class="title">Approved -2</span>
+                            </div>
+                            <span class="bar {{statusCondition.approved_2_by}}"></span>
+                            <div class="circle {{statusCondition.to_vendor}}">
+                              <span class="label">{{'&#10003;'}}</span>
+                              <span class="title">Sent to Vendor</span>
+                            </div>
+                            <span class="bar {{statusCondition.to_vendor}}"></span>
+                            <div class="circle {{statusCondition.good_received}}">
+                              <span class="label">{{'&#10003;'}}</span>
+                              <span class="title">Goods Received</span>
+                            </div>
+                            <span class="bar {{statusCondition.good_received}}"></span>
+                            <div class="circle {{statusCondition.complete_payment}}">
+                              <span class="label">{{'&#10003;'}}</span>
+                              <span class="title">Completed Payment</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div class="clearfix"></div>
+
+            </div>
+            <table class="tableMobilize table-striped" id="newPoTable">
+              <thead>
+                <tr>
+                  <th>Select item</th>
+                  <th>Unit</th>
+                  <th>Qty</th>
+                  <th>Price</th>
+                  <th>Amount</th>
+                  <th>Received Quantity</th>
+                  <th>Final Price</th>
+                  <th>Check</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr id="t_row" *ngFor="let row of tableArr; let i=index">
+                  <td><select class='select-menu-newPO cursor_pointer' title="select template for items"
+                      [(ngModel)]="row.select_item_id" placeholder="select an item"
+                      (change)="getAllUnit($event.target.value,i)" [disabled]="role!=1">
+                      <option *ngFor="let items of allItems" [value]="items.item_id">
+                        {{items.item_name}}
+                      </option>
+                    </select>
+                  </td>
+                  <td><select class='select-menu-newPO cursor_pointer' title="select item for units"
+                      [(ngModel)]="row.unit_id" placeholder="unit" (change)="getPriceVal($event.target.value,i)"
+                      [disabled]="role!=1">
+                      <option *ngFor="let unit of row.allUnits" [value]="unit.unit_id">
+                        {{unit.unit_name}}
+                      </option>
+                    </select></td>
+                  <td><input type="text" name="qty" placeholder="enter qty" [(ngModel)]="row.qty"
+                      (change)="enterQty(row,i)" pattern="^(0|[1-9][0-9]*)$" [disabled]="role!=1"></td>
+                  <td><input type="text" name="price" placeholder="enter price" title="select units for price"
+                      [(ngModel)]="row.price" pattern="^(0|[1-9][0-9]*)$" [disabled]="true"
+                      (change)="enterPrice($event.target.value,row,i)"></td>
+                  <td><input type="text" name="amount" placeholder="enter amount" [(ngModel)]="row.amount"
+                      pattern="^(0|[1-9][0-9]*)$" [disabled]="true"></td>
+                  <!-- role!=1 -->
+                  <td><input type="text" name="received_qty" placeholder="enter received quantity"
+                      (change)="receivedQty($event.target.value,row,i)" [(ngModel)]="row.received_qty"
+                      pattern="^(0|[1-9][0-9]*)$" [disabled]="role!=4"></td>
+                  <td><input type="text" name="final_price" placeholder="enter final price"
+                      (change)="getTotalFinalPrice($event.target.value,i)" [(ngModel)]="row.final_price"
+                      pattern="^(0|[1-9][0-9]*)$" [disabled]="role!=4">
+                  </td>
+                  <td><input type="checkbox" name="check" placeholder="enter yes or no" [(ngModel)]="row.check"
+                      [disabled]="role!=4"></td>
+                  <td><input type="checkbox" name="action" placeholder="enter action" [(ngModel)]="row.action"
+                      [disabled]="role!=4"></td>
+                </tr>
+                <tr>
+                  <td colspan="4">&nbsp;</td>
+                  <td>PO TOTAL</td>
+                  <td>{{getTotalPoAmount?getTotalPoAmount:getTotalPo() | currency}}</td>
+                  <!-- <td>{{poData.po_total}}</td> -->
+                  <td>TOTAL</td>
+                  <td>{{getTotalAmount?getTotalAmount:getTotal() | currency}}</td>
+                  <!-- <td>{{poData.grant_total}}</td> -->
+                  <td>&nbsp;</td>
+                </tr>
+                <tr style="text-align:center;" id="bottom-row">
+                  <td colspan="8">
+                  <td><button class="mdc-button mdc-button mdc-button--raised button button-big new-po"
+                      (click)="addRow()" [disabled]="disableAdd">Add Row</button></td>
+                  <!-- || disabledButtons('submit')" -->
+                </tr>
+
+                <tr style="text-align:center;">
+                  <td colspan="7"> </td>
+                  <td><button class="mdc-button mdc-button mdc-button--raised button button-big new-po"
+                      (click)="saveAsDraft()" [disabled]="disableDraft">Save Draft</button>
+                    <!-- || disabledButtons('draft') -->
+                  </td>
+                  <td><button class="mdc-button mdc-button mdc-button--raised button button-big new-po"
+                      (click)="submit()" [disabled]="disableSubmit" *ngIf="role==1">Submit</button>
+                    <button class="mdc-button mdc-button mdc-button--raised button button-big new-po"
+                      (click)="AddReceivedItem()" [disabled]="disableApproveReceiveditem"
+                      *ngIf="role==4">Submit</button>
+                    <!-- || disabledButtons('submit')" -->
+                    <button class="mdc-button mdc-button mdc-button--raised button button-big new-po" (click)="submit()"
+                      [disabled]="true" *ngIf="role!=1 && role!=4">Submit</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+
+            <div class="clearfix"></div>
+            <div class="mdc-layout-grid">
+              <div class="mdc-layout-grid__inner">
+                <div class="mdc-layout-grid__cell--span-12">
+                  <div class="mdc-layout-grid__inner">
+                    <div class="mdc-layout-grid__cell--span-3 border-arround">
+                      <strong>Prepared by :</strong> {{poData.prepared_by?poData.prepared_by:''}}<br><br>
+                      <!-- Date Ordered : <input type="text" name="usrname" placeholder="01/06/2019"> -->
+                      <div class="mdc-text-field mdc-text-field--outlined new-pur-contor orderedDate">
+                        <!-- <input type="text" id="tf-outlined_" class="mdc-text-field__input"> -->
+                        <input type="text" [max]="maxDate" [matDatepicker]="picker1" #date id="tf-outlined"
+                          class="mdc-text-field__input" [disabled]="true" name="date_order"
+                          [(ngModel)]="poData.date_order">
+                        <!-- role!=1 -->
+                        <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                        <mat-datepicker #picker1 color="primary"></mat-datepicker>
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="tf-outlined_"
+                              class="{{date.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Date
+                              Ordered</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                      <!-- Date Received : <input type="text" name="usrname" placeholder="04/06/2019"> -->
+                      <div class="mdc-text-field mdc-text-field--outlined new-pur-contor dateReceived">
+                        <input type="text" [max]="maxDate" [matDatepicker]="picker" #date1 id="tf-outlined"
+                          class="mdc-text-field__input" [disabled]="disableApproveReceiveditem" name="date_received"
+                          [(ngModel)]="poData.date_recieved">
+                        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker color="primary"></mat-datepicker>
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="tf-outlined"
+                              class="{{date1.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Date
+                              Received</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell--span-2 border-arround">
+                      <strong>Last Updated by:</strong> {{statusVal[statusVal.length - 1]?.last_updated_by}}<br><br>
+                      <!-- Last Updated : <input type="text" name="usrname" placeholder="05/06/2019"> -->
+                      <div class="mdc-text-field mdc-text-field--outlined new-pur-contor lastUpdated">
+                        <input type="text" id="tf-outlined_" class="mdc-text-field__input" #last_updated
+                          name="last_updated_comment" [(ngModel)]="last_updated_comment"
+                          [disabled]="disableApproveReceiveditem">
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="tf-outlined_"
+                              class="{{last_updated_comment?'mdc-floating-label--float-above':'mdc-floating-label'}}">Last
+                              Updated Comment</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mdc-layout-grid__cell--span-2 border-arround">
+                      <strong>Approval 1 by :</strong> {{statusVal[statusVal.length - 1]?.approved_by_one_name}}<br><br>
+                      <!-- <input type="text" name="usrname" placeholder="Approval 1 Comments"> -->
+                      <div class="mdc-text-field mdc-text-field--outlined new-pur-contor approved1">
+                        <input type="text" id="tf-outlined_" #Approval_1 name="approved_by_one_comment"
+                          [(ngModel)]="approve1Comment" class="mdc-text-field__input" [disabled]="disableApproveOne">
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="tf-outlined_"
+                              class="{{approve1Comment?'mdc-floating-label--float-above':'mdc-floating-label'}}">Approval
+                              1 comments</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                      <button class="mdc-button mdc-button--raised  cursor_pointer button button-big"
+                        [disabled]="disableApproveOne" (click)="Approval1(Approval_1.value)">Approval 1</button>
+                      <!-- || disabledButtons('approval_1') -->
+                    </div>
+                    <div class="mdc-layout-grid__cell--span-2 border-arround">
+                      <strong>Approval 2 by :</strong> {{statusVal[statusVal.length - 1]?.approved_by_two_name}}<br><br>
+                      <!-- <input type="text" name="usrname" placeholder="Approval 1 Comments"> -->
+                      <div class="mdc-text-field mdc-text-field--outlined new-pur-contor approved2">
+                        <input type="text" id="tf-outlined_" name="approved_by_two_comment" #Approval_2
+                          [(ngModel)]="approve2Comment" class="mdc-text-field__input" [disabled]="disableApproveTwo">
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="tf-outlined_"
+                              class="{{approve2Comment?'mdc-floating-label--float-above':'mdc-floating-label'}}">Approval
+                              2 comments</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                      <button class="mdc-button mdc-button--raised cursor_pointer button button-big"
+                        [disabled]="disableApproveTwo" (click)="Approval2(Approval_2.value)">Approval 2</button>
+                      <!-- || disabledButtons('approval_2') -->
+                    </div>
+                    <div class="mdc-layout-grid__cell--span-3 border-arround">
+                      <div class="mdc-text-field mdc-text-field--outlined new-pur-contor invoice_n">
+                        <input type="text" id="tf-outlined_" class="mdc-text-field__input" name="invoice_no" #invoice_no
+                          [(ngModel)]="invoiceNum" [disabled]="disableUploadInv">
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="tf-outlined_"
+                              class="{{invoice_no.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Invoice
+                              No</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                      <div class="mdc-text-field mdc-text-field--outlined new-pur-contor invoice_d">
+                        <input type="text" [max]="maxDate" [matDatepicker]="picker3" #c id="date"
+                          class="mdc-text-field__input" name="invoice_date" [(ngModel)]="invoiceDate"
+                          [disabled]="disableUploadInv">
+                        <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                        <mat-datepicker #picker3 color="primary"></mat-datepicker>
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="date"
+                              class="{{c.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Invoice
+                              Date</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                      <button class="mdc-button mdc-button--raisedupdateInvoice cursor_pointer button button-big"
+                        [disabled]="disableUploadInv" (click)="uploadInvoice()">Upload Invoice</button>
+                      <!-- || disabledButtons('invoice_upload') -->
+                    </div>
+                  </div>
+                </div>
+                <!-- <button  class="mdc-button mdc-button--raisedupdateInvoice cursor_pointer button button-big">Upload Invoice</button> -->
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<!-- </div> -->

@@ -1,0 +1,66 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+              <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left">
+                    Back</i></a></div>
+              <h3>Leave Rules Set up</h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+              <div class="row">
+
+                <div class="clear"></div>
+                <table class="tableMobilize table-striped">
+                  <thead>
+                    <tr>
+                      <th>Employee Type</th>
+                      <th>Sick</th>
+                      <th>Braverment</th>
+                      <th>Personal</th>
+                      <th>Track Time OFF</th>
+                      <th>Additional/Comp</th>
+                      <th>PTO Cashable</th>
+                      <th>PTO Carry Over</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let data of allsetUpdata | paginate: { 
+                    itemsPerPage: 50,
+                    currentPage: p,
+                    totalItems: allsetUpdata.length }">
+                      <td>{{data.employee_type_name}}</td>
+                      <td>{{data.sick}}</td>
+                      <td>{{data.braverment}}</td>
+                      <td>{{data.personal}}</td>
+                      <td>{{data.additional}}</td>
+                      <td>{{data.track_time_off}}</td>
+                      <td>{{data.pto_cashable}}</td>
+                      <td>{{data.pto_carry_over}}</td>
+                    </tr>
+                    <tr *ngIf="!allsetUpdata.length">
+                      <td>Record Not Found</td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <pagination-controls (pageChange)="p = $event"></pagination-controls>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

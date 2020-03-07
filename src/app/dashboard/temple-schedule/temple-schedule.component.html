@@ -1,0 +1,104 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+                <div class="left lt"><a class="cursor_pointer" (click)="back()"><i
+                  class="fa fa-chevron-left"> Back</i></a></div>
+              <h3>Temple Schedule <a href="javascript.void(0)" [routerLink]="['/priest_reservation']">Priest
+                  Reservation</a></h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+
+              <div class="row">
+                <div class="container">
+                  <form #formData='ngForm' style="margin:38px 48px;">
+                    <div class="mdc-select mdc-select--outlined new-pur-contorl p_name">
+                      <i class="material-icons position_detect">
+                        arrow_drop_down
+                      </i>
+                      <select class="mdc-select__native-control" name="puja_name" ngModel required>
+                        <option value="" disabled selected></option>
+                        <option [value]="puja.puja_name" *ngFor="let puja of pujaDataVAl">{{puja.puja_name}}</option>
+                        
+                      </select>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label class="mdc-floating-label">Puja Name</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                   
+                    <div class="mdc-text-field mdc-text-field--textarea description">
+                        <textarea id="textarea" class="mdc-text-field__input" rows="8" cols="40" name="description" ngModel></textarea>
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="textarea" class="mdc-floating-label">Decription</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                    <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl price">
+                      <input type="text" #price id="price" pattern="[0-9]+" class="mdc-text-field__input" name="price" ngModel required>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label for="price" class="mdc-floating-label">Price</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                    <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl reportingTime">
+                      <input type="text" #reportingTime [owlDateTimeTrigger]="dt2_to" #pickTime [owlDateTime]="dt2_to"
+                        id="reportingTime" class="mdc-text-field__input" name="reporting_time" ngModel required>
+                      <!-- <input [owlDateTimeTrigger]="dt2_to" #pickTime  [owlDateTime]="dt2_to" id="pickTime" class="mdc-text-field__input"> -->
+                      <span [owlDateTimeTrigger]="dt2_to"><i class="material-icons owlCal">alarm</i></span>
+                      <owl-date-time [pickerType]="'timer'" #dt2_to></owl-date-time>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label for="reportingTime" class="{{pickTime.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Reporting Time</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                    <div class="mdc-select mdc-select--outlined new-pur-contorl d_o_w">
+                      <i class="material-icons position_detect">
+                        arrow_drop_down
+                      </i>
+                      <select class="mdc-select__native-control" name="day_id" ngModel required>
+                        <option value="" disabled selected></option>
+                        <option [value]="days.day_id" *ngFor="let days of days">{{days.day}}</option>
+                        
+                      </select>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label class="mdc-floating-label">Day of the week</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                    <!-- <input class="btn2" type="submit" value="Publish to the Website"> -->
+                    <button class="mdc-button mdc-button--raised btn2" [disabled]="!formData.valid" (click)="publish(formData.value)">Publish to the Website</button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,81 @@
+.mdc-text-field.mdc-text-field--outlined.new-pur-contorl,
+.mdc-select.mdc-select--outlined {
+    width: 100%;
+}
+
+.mdc-select--outlined:not(.mdc-select--disabled) {
+    background-color: #fff !important;
+}
+
+.mdc-text-field--outlined:not(.mdc-text-field--disabled) {
+    background-color: #fff;
+}
+
+.mdc-select:not(.mdc-select--disabled).mdc-select--focused .mdc-floating-label {
+    color: #f36921;
+}
+
+.mdc-text-field:not(.mdc-select--disabled).mdc-text-field--focused .mdc-floating-label {
+    color: #f36921;
+}
+
+.mdc-select--outlined:not(.mdc-select--disabled) .mdc-notched-outline__leading,
+.mdc-select--outlined:not(.mdc-select--disabled) .mdc-notched-outline__notch,
+.mdc-select--outlined:not(.mdc-select--disabled) .mdc-notched-outline__trailing {
+    border-color: #f36921;
+}
+
+.mdc-text-field--outlined:not(.mdc-select--disabled) .mdc-notched-outline__leading,
+.mdc-text-field--outlined:not(.mdc-select--disabled) .mdc-notched-outline__notch,
+.mdc-text-field--outlined:not(.mdc-select--disabled) .mdc-notched-outline__trailing {
+    border-color: #f36921;
+}
+
+.mdc-select---focused.select__dropdown-icon {
+    background: none !important;
+}
+
+i.material-icons.position_detect {
+    left          : auto;
+    right         : 8px;
+    position      : absolute;
+    bottom        : 16px;
+    width         : 24px;
+    height        : 24px;
+    transition    : transform 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    color         : #767676;
+}
+
+.mdc-text-field--textarea:not(.mdc-select--disabled).mdc-text-field--textarea--focused .mdc-floating-label,
+.mdc-text-field--textarea:not(.mdc-text-field--disabled) .mdc-notched-outline__leading,
+.mdc-text-field--textarea:not(.mdc-text-field--disabled) .mdc-notched-outline__notch,
+.mdc-text-field--textarea:not(.mdc-text-field--disabled) .mdc-notched-outline__trailing {
+    border-color: #f36921;
+}
+
+.mdc-text-field--textarea:not(.mdc-text-field--disabled) {
+    background-color: #fff;
+    width           : 100%;
+}
+
+.mdc-text-field.mdc-text-field--textarea.description {
+    border-color: #f36921;
+}
+
+.mdc-text-field--textarea:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover~.mdc-notched-outline .mdc-notched-outline__leading,
+.mdc-text-field--textarea:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover~.mdc-notched-outline .mdc-notched-outline__notch,
+.mdc-text-field--textarea:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__input:hover~.mdc-notched-outline .mdc-notched-outline__trailing,
+.mdc-text-field--textarea:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover~.mdc-notched-outline .mdc-notched-outline__leading,
+.mdc-text-field--textarea:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover~.mdc-notched-outline .mdc-notched-outline__notch,
+.mdc-text-field--textarea:not(.mdc-text-field--disabled):not(.mdc-text-field--focused) .mdc-text-field__icon:hover~.mdc-notched-outline .mdc-notched-outline__trailing {
+    border-color: #f36921;
+}
+
+.mdc-text-field--textarea {
+    height: 50%;
+}
+
+select.mdc-select__native-control.ng-dirty.ng-valid.ng-touched {
+    padding-bottom: 0px;
+}

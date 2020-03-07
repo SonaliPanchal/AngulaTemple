@@ -1,0 +1,20 @@
+i.material-icons.logoutOption {
+    float: left !important;
+    position: relative !important;
+   /* right: 46px !important;*/
+    cursor: pointer;
+}
+.logoutMenu{
+    transform-origin: right top;
+    left: 0px;
+    top: 35px;
+    max-height: 530px;
+    position: relative;
+}
+span.userName {
+    position: relative;
+   /* right: 138px !important;*/
+}
+.right {
+    cursor: pointer;
+}

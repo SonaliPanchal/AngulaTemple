@@ -1,0 +1,127 @@
+<div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>	
+    <div class="views">
+      <div class="view view-main">
+        <div class="pages navbar-through toolbar-through">
+          <div data-page="index" class="page">
+            <div class="page-content">	
+			  <div class="list-block add-vender">
+					  <div class="section-heading">
+					  <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left"> Back</i></a></div>
+							<h3>Add Vendor</h3>
+						</div>	
+						<div class="clear"></div>
+						<div class="row">
+								<div class="clearfix"></div>
+								<div class="mdc-layout-grid">
+									<div class="mdc-layout-grid__inner">
+
+										<div class="mdc-layout-grid__cell--span-12">
+											<form #vendorForm='ngForm'>
+												<div
+													class="mdc-text-field mdc-text-field--outlined new-pur-contorl Employee_ID">
+													<input type="text" #vendor_name id="vendor_name" name="vendor_name"
+														class="mdc-text-field__input" ngModel required>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label for="vendor_name" class="{{vendor_name.value?'mdc-floating-label--float-above':''}}  mdc-floating-label">Vendor
+																Name</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div>
+												<br><br>
+												<div
+													class="mdc-text-field mdc-text-field--outlined new-pur-contorl Employee_Name">
+													<input type="text" #address_line1 id="address_line1" name="address_line1"
+														class="mdc-text-field__input" ngModel required>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label for="address_line1"
+																class="{{address_line1.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Address Line1</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div><br><br>
+												<div
+													class="mdc-text-field mdc-text-field--outlined new-pur-contorl Assignment_Start">
+													<input type="text" #address_line2 id="address_line2"
+														name="address_line2" class="mdc-text-field__input" ngModel required>
+
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label for="address_line2"
+																class="{{address_line2.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Address Line2</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div><br><br>
+												<div
+													class="mdc-text-field mdc-text-field--outlined new-pur-contorl Assignment_End">
+													<input type="text" #state id="state" name="state"
+														class="mdc-text-field__input" ngModel required>
+														<div class="mdc-notched-outline">
+													<div class="mdc-notched-outline__leading"></div>
+													<div class="mdc-notched-outline__notch">
+														<label for="state" class="{{state.value?'mdc-floating-label--float-above':''}} mdc-floating-label">State</label>
+													</div>
+													<div class="mdc-notched-outline__trailing"></div>
+												</div>
+										</div>
+										<br><br>
+										<div
+											class="mdc-text-field mdc-text-field--outlined new-pur-contorl Employee_Type">
+											<input type="text" id="city" #city name="city" class="mdc-text-field__input"
+												ngModel required>
+											<div class="mdc-notched-outline">
+												<div class="mdc-notched-outline__leading"></div>
+												<div class="mdc-notched-outline__notch">
+													<label for="city" class="{{city.value?'mdc-floating-label--float-above':''}} mdc-floating-label">City</label>
+												</div>
+												<div class="mdc-notched-outline__trailing"></div>
+											</div>
+										</div><br><br>
+										<div class="mdc-text-field mdc-text-field--outlined new-pur-contorl Role">
+											<input type="text" #country id="country" name="country" class="mdc-text-field__input"
+												ngModel required>
+											<div class="mdc-notched-outline">
+												<div class="mdc-notched-outline__leading"></div>
+												<div class="mdc-notched-outline__notch">
+													<label for="country" class="{{country.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Country</label>
+												</div>
+												<div class="mdc-notched-outline__trailing"></div>
+											</div>
+										</div><br><br>
+										<div class="mdc-text-field mdc-text-field--outlined new-pur-contorl Group_ID">
+											<input type="text" #zip id="zip" pattern="[0-9]+" name="zip" class="mdc-text-field__input"
+												ngModel required>
+											<div class="mdc-notched-outline">
+												<div class="mdc-notched-outline__leading"></div>
+												<div class="mdc-notched-outline__notch">
+													<label for="zip" class="{{zip.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Zip</label>
+												</div>
+												<div class="mdc-notched-outline__trailing"></div>
+											</div>
+										</div><br><br>
+
+										</form>
+										<div><button style="width:160px;"
+												class="mdc-button mdc-button--raised button button-big"
+												[disabled]="!vendorForm.valid"
+												(click)="addVendor(vendorForm.value);vendorForm.reset()">Save</button>
+										</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+					</div>
+					 
+			  </div>
+            </div>
+          </div>
+        </div>

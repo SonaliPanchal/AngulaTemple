@@ -1,0 +1,298 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+              <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left">
+                    Back</i></a></div>
+              <h3>Priest & Facility Booking Tracker</h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+              <p>Filter by :</p>
+            </div>
+            <table class="tableMobilize table-striped pf-booking">
+              <thead>
+                <tr>
+                  <td>
+
+                    <div class="mdc-select mdc-select--outlined new-pur-contorl p_c">
+                      <i class="material-icons position_detect">
+                        arrow_drop_down
+                      </i>
+                      <select class="mdc-select__native-control" #priest_choice name="priest_choice"
+                        [(ngModel)]="filterdObj.priest_choice"
+                        (change)="ApplyFilter($event.target.value,'priest_choice')">
+                        <option value="" disabled selected></option>
+                        <option *ngFor="let choice of priestTracker" [value]="choice.priest_choice">
+                          {{getPriestChoice(choice.priest_choice)}}</option>
+                        <!-- <option value="puja_at_temple">puja at temple</option> -->
+                        <!-- <option value="Vendor">Priest Booking Date & Time</option>
+                          <option value="Vendor">Facility Required</option>
+                          <option value="Vendor">Facility Name</option>
+                          <option value="Vendor">Facility Date</option>
+                          <option value="Vendor">Facility & Timeslot</option> -->
+                      </select>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label
+                            class="{{priest_name.value?'mdc-floating-label--float-above':' mdc-floating-label'}}">Priest
+                            Choice</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+
+                    <div class="mdc-select mdc-select--outlined new-pur-contorl p_name">
+                      <i class="material-icons position_detect">
+                        arrow_drop_down
+                      </i>
+                      <select class="mdc-select__native-control" #priest_name name="priest_name"
+                        [(ngModel)]="filterdObj.priest_name" (change)="ApplyFilter($event.target.value,'priest_name')">
+                        <option value="" disabled selected></option>
+                        <option *ngFor="let priest of priestTracker" [value]="priest.priest_name">{{priest.priest_name}}
+                        </option>
+                      </select>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label
+                            class="{{priest_name.value?'mdc-floating-label--float-above':'mdc-floating-label'}} ">Priest
+                            Name</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+
+                    <div class="mdc-select mdc-select--outlined new-pur-contorl pbookingTime">
+                      <i class="material-icons position_detect">
+                        arrow_drop_down
+                      </i>
+                      <select class="mdc-select__native-control" #dateAndTime name="dateAndTime"
+                        [(ngModel)]="filterdObj.dateAndTime" (change)="ApplyFilter($event.target.value,'dateAndTime')">
+                        <option value="" disabled selected></option>
+                        <option *ngFor="let priest of priestTracker" [value]="priest.dateAndTime">{{priest.dateAndTime}}
+                        </option>
+                      </select>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label
+                            class="{{dateAndTime.value?'mdc-floating-label--float-above':' mdc-floating-label'}}">Priest
+                            Booking Date & Time</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+
+                    <!-- <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl pbookingTime">
+                      <input type="text" [max]="maxDate" [(ngModel)]="filterdObj.dateAndTime" [owlDateTime]="dt2"
+                        name="dateAndTime" [(ngModel)]="dateTime"
+                        (dateTimeInput)="ApplyFilterDateOwl($event,'dateAndTime')" #date_ id="date__"
+                        class="mdc-text-field__input">
+                      <span [owlDateTimeTrigger]="dt2"><i class="material-icons owlCal">event</i></span>
+                      <owl-date-time #dt2></owl-date-time>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label for="date__"
+                            class="{{date_.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Priest
+                            Booking Date & Time</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div> -->
+                  </td>
+                  <td>
+
+                    <div class="mdc-select mdc-select--outlined new-pur-contorl f_r">
+                      <i class="material-icons position_detect">
+                        arrow_drop_down
+                      </i>
+                      <select class="mdc-select__native-control" #facility_required name="facility_required"
+                        [(ngModel)]="filterdObj.facility_required"
+                        (change)="ApplyFilter($event.target.value,'facility_required')">
+                        <option value="" disabled selected></option>
+                        <option *ngFor="let priest of priestTracker" [value]="priest.facility_required">
+                          {{priest.facility_required==1?'yes':'no'}}
+                        </option>
+                        <!-- <option value="1">Yes</option>
+                        <option value="0">No</option> -->
+                        <!-- <option value="Vendor">28/07/2018 </option>
+                            <option value="Vendor">29/07/2018 </option> -->
+                      </select>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label
+                            class="{{facility_required.value?'mdc-floating-label--float-above':' mdc-floating-label'}}">Facility
+                            Required</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+
+                    <div class="mdc-select mdc-select--outlined new-pur-contorl f_n">
+                      <i class="material-icons position_detect">
+                        arrow_drop_down
+                      </i>
+                      <select class="mdc-select__native-control" #facility_name name="facility_name"
+                        [(ngModel)]="filterdObj.facility_name"
+                        (change)="ApplyFilter($event.target.value,'facility_name')">
+                        <option value="" disabled selected></option>
+                        <option *ngFor="let facility of priestTracker" [value]="facility.facility_name">
+                          {{facility.facility_name}}</option>
+
+                      </select>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label
+                            class="{{facility_name.value?'mdc-floating-label--float-above':'mdc-floating-label'}} ">Facility
+                            Name</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="mdc-select mdc-select--outlined new-pur-contorl f_d">
+                      <i class="material-icons position_detect">
+                        arrow_drop_down
+                      </i>
+                      <select class="mdc-select__native-control" #facility_date name="facility_date"
+                        [(ngModel)]="filterdObj.facility_date"
+                        (change)="ApplyFilter($event.target.value,'facility_date')">
+                        <option value="" disabled selected></option>
+                        <option *ngFor="let facility of priestTracker" [value]="facility.facility_date">
+                          {{facility.facility_date}}</option>
+
+                      </select>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label
+                            class="{{facility_date.value?'mdc-floating-label--float-above':'mdc-floating-label'}} ">Facility
+                            Date
+                          </label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                    <!-- <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl f_d">
+                      <input type="text" [max]="maxDate" [(ngModel)]="filterdObj.facility_date" [matDatepicker]="picker"
+                        name="facility_date" (dateChange)="ApplyFilterDate($event.target.value,'facility_date')" #date_f
+                        id="date_f" class="mdc-text-field__input">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker color="primary"></mat-datepicker>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label for="date_f"
+                            class="{{date_f.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Facility
+                            Date</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div> -->
+                  </td>
+                  <td>
+                    <div class="mdc-select mdc-select--outlined new-pur-contorl f_t">
+                      <i class="material-icons position_detect">
+                        arrow_drop_down
+                      </i>
+                      <select class="mdc-select__native-control" #facility_timeslote_to name="facility_timeslote_to"
+                        [(ngModel)]="filterdObj.facility_timeslote_to"
+                        (change)="ApplyFilter($event.target.value,'facility_timeslote_to')">
+                        <option value="" disabled selected></option>
+                        <option *ngFor="let facility of priestTracker" [value]="facility.facility_timeslote_to">
+                          {{facility.facility_timeslot_from}} to {{facility.facility_timeslote_to}} </option>
+
+                      </select>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label
+                            class="{{facility_timeslote_to.value?'mdc-floating-label--float-above':' mdc-floating-label'}}">Facility
+                            & Timeslot
+                          </label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                    <!-- <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl f_t HALF_WIDTH">
+                      <input type="text" [max]="maxDate" [(ngModel)]="fromDate"
+                        [owlDateTime]="dt2_" #date id="ft" name="facility_timeslot_from"
+                        class="mdc-text-field__input">
+                 
+                      <span [owlDateTimeTrigger]="dt2_"><i class="material-icons owlCal">alarm</i></span>
+                      <owl-date-time [pickerType]="'timer'" #dt2_></owl-date-time>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label for="ft"
+                            class="{{date.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Facility &
+                            Timeslot</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div> -->
+
+                  </td>
+                </tr>
+                <tr>
+                  <th>Priest Choice</th>
+                  <th>Priest Name</th>
+                  <th>Priest booking Date & Time</th>
+                  <th>Facility Required</th>
+                  <th>Facility Name</th>
+                  <th>Facility Date</th>
+                  <th>Facility & Timeslot</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngIf="!tempPriestTrac.length">
+                  <td> Record not found</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr
+                  *ngFor="let trackRecord of tempPriestTrac | paginate:  { itemsPerPage: 50, currentPage: p ,totalItems: tempPriestTrac.length}">
+                  <td>{{getPriestChoice(trackRecord.priest_choice)}}</td>
+                  <td>{{trackRecord.priest_name}}</td>
+                  <td>{{trackRecord.dateAndTime}}</td>
+                  <td>{{trackRecord.facility_required==1?'yes':'no'}}</td>
+                  <td>{{trackRecord.facility_name}}</td>
+                  <td>{{trackRecord.facility_date}}</td>
+                  <td>{{trackRecord.facility_timeslot_from}} to {{trackRecord.facility_timeslote_to}}</td>
+                </tr>
+
+              </tbody>
+            </table>
+            <pagination-controls (pageChange)="p = $event"></pagination-controls>
+            <!-- <pagination-controls (pageChange)="pageChanged($event)"></pagination-controls> -->
+            <!-- <div style="text-align:center; width:100%;">
+							<button class="mdc-button mdc-button--raised btn2"><a style="color:#fff!important;" href="pur_order.html">Create new PO</a></button>
+						</div> -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,171 @@
+<app-header></app-header>
+<div class="parentelement">
+  <ngx-loading-bar [includeSpinner]="false"></ngx-loading-bar>
+</div>
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+              <div class="left lt"><a class="cursor_event cursor_pointer" (click)="back()"><i
+                    class="fa fa-chevron-left"> Back</i></a></div>
+              <h3>Signup</h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+              <div class="row">
+                <div class="register-content">
+                  <!-- ngNativeValidate name="formData" id="formdata" -->
+                  <form #formData="ngForm">
+                    <div class="inputbox_">
+                      <!-- <span>Full Name:</span><br> -->
+                      <!-- <input type="text" name="fulname" placeholder="Full Name"> -->
+                      <div class="mdc-text-field mdc-text-field--outlined fullName">
+                        <input type="text" name="fullName" #fullName='ngModel' required id="fullName" fullName
+                          [(ngModel)]="formObj.fullname" class="mdc-text-field__input">
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="fullName" class="mdc-floating-label">Full Name</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                      <div *ngIf="fullName.errors && fullName.touched" class="fullName error-message">
+                        <div class="validation-error validation-helper" *ngIf="fullName.errors.required">
+                          <span class="fa fa-times required-message"></span>Please fill this field
+                        </div>
+                      </div>
+                    </div>
+                    <div class="inputbox_">
+                      <!-- <span>Username:</span><br> -->
+                      <!-- <input type="text" name="username2" placeholder="Username"> -->
+                      <div class="mdc-text-field mdc-text-field--outlined username">
+                        <input type="text" #username='ngModel' required name="username" id="username"
+                          [(ngModel)]="formObj.full_name" class="mdc-text-field__input">
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="username" class="mdc-floating-label">Username</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                      <div *ngIf="username.errors && username.touched" class="username error-message">
+                        <div class="validation-error validation-helper" *ngIf="username.errors.required">
+                          <span class="fa fa-times required-message"></span>Please fill this field
+                        </div>
+                      </div>
+                    </div>
+                    <div class="inputbox_">
+                      <!-- <span>Email:</span><br> -->
+                      <!-- <input type="email" name="email" placeholder="email@gmail.com"> -->
+                      <div class="mdc-text-field mdc-text-field--outlined email">
+                        <input type="text" required name="email" #email='ngModel'
+                          pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z.-]+\.[a-zA-Z]{2,3}$" id="email" [(ngModel)]="formObj.email"
+                          class="mdc-text-field__input">
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="email" class="mdc-floating-label">Email</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                      <div *ngIf="email.errors && email.touched" class="email error-message">
+                        <div class="validation-error validation-helper" *ngIf="email.errors.required">
+                          <span class="fa fa-times required-message"></span>Please fill this field
+                        </div>
+                        <div class="validation-error validation-helper" *ngIf="email.errors.pattern">
+                          <span class="fa fa-times required-message"></span>Please enter valid email address
+                        </div>
+                      </div>
+                    </div>
+                    <div class="inputbox_">
+                      <!-- <span>Password:</span><br> -->
+                      <!-- <input type="password" name="password2" placeholder="***********"> -->
+                      <div class="mdc-text-field mdc-text-field--outlined password">
+                        <input type="password" required #password='ngModel' name="password" id="password" minlength="5"
+                          [(ngModel)]="formObj.password" class="mdc-text-field__input">
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="password" class="mdc-floating-label">Password</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                      <div *ngIf="password.errors && password.touched" class="password error-message">
+                        <div class="validation-error validation-helper" *ngIf="password.errors.required">
+                          <span class="fa fa-times required-message"></span>Please fill this field
+                        </div>
+                        <div class="validation-error validation-helper" *ngIf="password.errors.minlength">
+                          <span class="fa fa-times required-message"></span>Please enter password of length 5
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mdc-select mdc-select--outlined new-pur-contorl inputbox_ role">
+                      <i class="material-icons position_detect">
+                        arrow_drop_down
+                      </i>
+                      <select class="mdc-select__native-control" #role_id='ngModel' name="role_id"
+                        [(ngModel)]="formObj.role_id" required>
+                        <option value="" disabled selected></option>
+                        <option value="1">
+                          1
+                        </option>
+                        <option value="2">
+                          2
+                        </option>
+                        <option value="3">
+                          3
+                        </option>
+                        <option value="4">
+                          4
+                        </option>
+                        <option value="5">
+                          5
+                        </option>
+
+                      </select>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label
+                            class="{{role_id.value?'mdc-floating-label--float-above':'mdc-floating-label'}}">Role</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                    <div *ngIf="role_id.errors && role_id.touched" class="role_id error-message">
+                      <div class="validation-error validation-helper" *ngIf="role_id.errors.required">
+                        <span class="fa fa-times required-message"></span>Please select a role
+                      </div>
+                    </div>
+                  </form>
+
+                  <div class="inputbox">
+                    <button class="mdc-button mdc-button--raised button button-big" [disabled]="!formData.valid"
+                      (click)="signUp()">
+                      Sign Up
+                    </button>
+                    <!-- <button class="button button-big" [disabled]="!signup.valid">Sign Up</button> -->
+                  </div>
+                  <!-- </form> -->
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-footer></app-footer>
+
+</div>

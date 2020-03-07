@@ -1,0 +1,210 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+	<div class="view view-main">
+		<div class="pages navbar-through toolbar-through">
+			<div data-page="index" class="page">
+				<div class="page-content">
+					<div class="list-block">
+						<div class="section-heading">
+							<div class="left lt"><a class="cursor_pointer" (click)="back()"><i
+										class="fa fa-chevron-left"> Back</i></a></div>
+							<h3>Apply <a [routerLink]="['/employee']">Leave</a></h3>
+						</div>
+						<div class="clear"></div>
+						<div class="features-product" style="margin-top:34px;">
+
+							<div class="row">
+								<div class="container">
+									<div class="clearfix"></div>
+									<div class="mdc-layout-grid">
+										<div class="mdc-layout-grid__inner">
+											<div class="mdc-layout-grid__cell--span-4">
+												<div class="res">
+													<form #formData='ngForm'>
+
+														<div
+															class="mdc-text-field mdc-text-field--outlined new-pur-contorl fDate">
+															<input required type="text" matInput [matDatepicker]="picker1" #fDate
+																id="fDate" name="from_date" [min]="maxDate"
+																class="mdc-text-field__input" ngModel>
+															<mat-datepicker-toggle matSuffix [for]="picker1">
+															</mat-datepicker-toggle>
+															<mat-datepicker #picker1></mat-datepicker>
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="fDate"
+																		class="{{fDate.value?'mdc-floating-label--float-above':''}} mdc-floating-label">From
+																		Date</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+
+														<div
+															class="mdc-text-field mdc-text-field--outlined new-pur-contorl toDate">
+															<input type="text"  required matInput [matDatepicker]="picker2"
+																name="to_date" #toDate id="toDate" [min]="maxDate"
+																class="mdc-text-field__input" ngModel>
+															<mat-datepicker-toggle matSuffix [for]="picker2">
+															</mat-datepicker-toggle>
+															<mat-datepicker #picker2></mat-datepicker>
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="toDate"
+																		class="{{toDate.value?'mdc-floating-label--float-above':''}} mdc-floating-label">To
+																		Date</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+
+														<div
+															class="mdc-select mdc-select--outlined new-pur-contorl LeaveType">
+															<i class="material-icons position_detect">
+																arrow_drop_down
+															</i>
+															<select class="mdc-select__native-control"
+																name="leave_type_id" ngModel required>
+																<option value="" disabled selected></option>
+																<option *ngFor="let leave of leaveType"
+																	[value]="leave.leave_type_id">{{leave.leave_type_name}}</option>
+
+															</select>
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label class="mdc-floating-label">Leave Type</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+
+														<div
+															class="mdc-text-field mdc-text-field--outlined new-pur-contorl reasonForLeave">
+															<input type="text" #reasonForLeave id="reasonForLeave"
+																name="reason_for_leave" class="mdc-text-field__input"
+																ngModel required>
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="reasonForLeave"
+																		class="mdc-floating-label">Reason for
+																		Leave</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+
+														<div class="mdc-select mdc-select--outlined new-pur-contorl Subsitute"
+															name="priest_id">
+															<i class="material-icons position_detect">
+																arrow_drop_down
+															</i>
+															<select class="mdc-select__native-control" name="priest_id"
+																ngModel required>
+																<option value="" disabled selected></option>
+																<option [value]="priest.priest_id"
+																	*ngFor="let priest of allpriest">
+																	{{priest.priest_name}}
+
+															</select>
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label class="mdc-floating-label">Subsitute</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+
+														<div
+															class="mdc-text-field mdc-text-field--outlined new-pur-contorl numberOfDays">
+															<input type="text" #numberOfDays id="numberOfDays"
+																name="number_of_days" class="mdc-text-field__input"
+																ngModel pattern='^[0-9]+$' required>
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label for="numberOfDays"
+																		class="mdc-floating-label">Number of
+																		Days</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+													</form>
+												</div>
+												<button class="mdc-button mdc-button--raised btn2"
+													[disabled]="!formData.valid"
+													(click)="postLeave(formData.value)">Submit</button>
+											</div>
+											<div class="mdc-layout-grid__cell--span-4">
+											</div>
+											<div class="mdc-layout-grid__cell--span-4">
+
+												<!-- <div
+													class="mdc-text-field mdc-text-field--outlined new-pur-contorl viewDetail">
+													<input matInput [matDatepicker]="picker" type="text" #viewDetail
+														id="viewDetail" class="mdc-text-field__input datepicker" (dateChange)="selectYear(viewDetail.value, $event)" [(ngModel)]="yearPicker">
+													<mat-datepicker-toggle matSuffix [for]="picker">
+													</mat-datepicker-toggle>
+													<mat-datepicker #picker startView="year" [startAt]="startDate">
+													</mat-datepicker>
+													<div class="mdc-notched-outline">
+														<div class="mdc-notched-outline__leading"></div>
+														<div class="mdc-notched-outline__notch">
+															<label for="viewDetail"
+																class="{{viewDetail.value?'mdc-floating-label--float-above':''}}mdc-floating-label">View
+																Leave Details For</label>
+														</div>
+														<div class="mdc-notched-outline__trailing"></div>
+													</div>
+												</div> -->
+												<div class="mdc-select mdc-select--outlined new-pur-contorl viewDetail"
+															name="priest_id">
+															<i class="material-icons position_detect">
+																arrow_drop_down
+															</i>
+															<select class="mdc-select__native-control" name="leaveyear"
+																ngModel (change)="selectedyear($event.target.value)">
+																<option value="" disabled selected></option>
+																<option [value]="leaveyear"
+																	*ngFor="let leaveyear of leaveYear">
+																	{{leaveyear}}
+
+															</select>
+															<div class="mdc-notched-outline">
+																<div class="mdc-notched-outline__leading"></div>
+																<div class="mdc-notched-outline__notch">
+																	<label class="mdc-floating-label">View
+																			Leave Details For</label>
+																</div>
+																<div class="mdc-notched-outline__trailing"></div>
+															</div>
+														</div>
+												<h4>Leave details</h4>
+												<div id="leave">
+													<ul class="li_leave">
+														<li><span>Total Leaves</span> : {{leaveCount}}</li>
+														<li><span>Used Annual Leave</span> : {{usedAnuualLeave}}</li>
+														<li><span>Used Sick Leave</span> : {{sickType}}</li>
+														<li><span>Leave balance</span> : {{leaveBalance}}</li>
+														<li><span>LOP</span> : {{LOP}}</li>
+													</ul>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

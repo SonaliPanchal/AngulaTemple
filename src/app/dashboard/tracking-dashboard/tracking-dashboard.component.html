@@ -1,0 +1,52 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">	
+    <div class="list-block">
+        
+        <div class="section-heading">
+        <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left"> Back</i></a></div>
+          <h3>Tracking Dashboard</h3> 
+        </div>	
+        <div class="clear"></div>
+      <div class="features-product">
+        <div class="row">
+        <div class="shopbox po_bg">
+              <a href="javascript.void(0)" [routerLink]="['/purchase/po_maintenance']">
+                <!-- "['po_tracker']" -->
+              <i class="fa fa-pencil-square-o fa_size"></i>
+              <h3>Purchase Order Tracker</h3>
+              </a> 
+            </div> 
+            <div class="shopbox im_bg">
+              <a href="javascript.void(0)" [routerLink]="['/resrvation/pf_booking_tracker']">
+                  <!-- pfb_tracker -->
+              <i class="fa fa-thumb-tack fa_size"></i>
+              <h3>Priest & Facility Booking Tracker</h3>
+              </a>
+            </div> 
+            <div class="shopbox reservation_bg">
+              <a href="javascript.void(0)" [routerLink]="['/invoice/ip_tracker']">
+                  <!-- ip_tracker -->
+              <i class="fa fa-map-marker fa_size"></i>
+              <h3>Invoice Payment Tracker</h3> 
+              </a>
+            </div>
+            <div class="shopbox security_bg">
+              <a href="javascript.void(0)" [routerLink]="['/employee/leave_tracker']">
+                  <!-- leave_tracking -->
+              <i class="fa fa-location-arrow fa_size"></i>
+              <h3>Leave Tracker</h3>
+              </a>
+            </div>
+        </div>
+      </div>
+    </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

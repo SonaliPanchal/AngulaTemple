@@ -1,0 +1,48 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>	
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">	
+    <div class="list-block">
+        <div class="section-heading">
+        <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left"> Back</i></a></div>
+          <h3>Staff Administration</h3>
+        </div>	
+        <div class="clear"></div>
+      <div class="features-product">
+        
+        <div class="row">
+            <div class="shopbox po_bg">
+            <a href="javascript.void(0)" [routerLink]="['add_employee']">
+              <i class="fa fa-user-plus fa_size"></i>
+              <h3>Add Employee</h3>
+            </a>	
+            </div>
+            <div class="shopbox reservation_bg">
+              <a href="javascript.void(0)" [routerLink]="['modify_employee']">
+              <i class="fa fa-pencil-square-o fa_size"></i>
+              <h3>Modify Employee</h3>
+              </a>
+            </div>
+            <div class="shopbox security_bg">
+              <a href="javascript.void(0)" [routerLink]="['block_employee']">
+              <i class="fa fa-lock fa_size"></i>
+              <h3>Block Employee</h3>
+              </a>
+            </div>
+            <div class="shopbox im_bg">
+              <a href="javascript.void(0)" [routerLink]="['delete_employee']">
+              <i class="fa fa-trash-o fa_size"></i>
+              <h3>Delete Employee</h3>
+              </a>
+            </div>
+        </div>
+      </div>
+    </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,155 @@
+<div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>	
+    <div class="views">
+      <div class="view view-main">
+        <div class="pages navbar-through toolbar-through">
+          <div data-page="index" class="page">
+            <div class="page-content">	
+			  <div class="list-block"> 
+					  <div class="section-heading">
+						<div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left"> Back</i></a></div>
+							<h3>Leave Tracker</h3>
+						</div>	
+						<div class="clear"></div>
+					<div class="features-product">
+					<p>Filter by :</p>  
+				</div>
+			<table class="tableMobilize table-striped">
+					<thead>
+						<tr>
+							<td><select class="form-control" id="sel1">
+								<option value="Vendor">Emp ID</option>
+								<option value="Vendor">001</option>
+								<option value="Vendor">002</option>
+								<option value="Vendor">003</option>
+								<option value="Vendor">004</option>
+								<option value="Vendor">005</option>
+								<option value="Vendor">006</option>
+								<option value="Vendor">007</option>
+								<option value="Vendor">008</option>
+								<option value="Vendor">009</option>
+								<option value="Vendor">010</option>
+							</select></td>
+							<td><select class="form-control" id="sel1">
+							<option value="Vendor">Emp Name</option> 
+								<option value="Vendor">Charyulu Samudrala</option>
+								<option value="Vendor">Varadarajan Soriraja</option>
+								<option value="Vendor">Gopal Bhattar</option>
+								<option value="Vendor">Balaji Sambasivam</option>
+								<option value="Vendor">Seenu Srinivasan</option>
+								<option value="Vendor">Padma</option>
+								<option value="Vendor">Vatsala</option>
+								<option value="Vendor">Shamanna</option>
+								<option value="Vendor">Srividya</option>
+								<option value="Vendor">Vatsala</option>
+							</select></td>
+							<td><select class="form-control" id="sel1">
+								<option value="Vendor">Leave Type</option>
+								<option value="Vendor">PTO</option>
+								<option value="Vendor">Sick</option>
+								<option value="Vendor">Personal Day</option>
+								<option value="Vendor">Breaverment</option>
+								<option value="Vendor">Additional</option>
+								<option value="Vendor">Comp Off</option>
+							</select></td>
+							<td><select class="form-control" id="sel1">
+								<option value="Vendor">Date Start</option>
+								<option value="Vendor">20/06/2019</option>
+								<option value="Vendor">22/06/2019</option>
+								<option value="Vendor">23/06/2019</option>
+								<option value="Vendor">24/06/2019</option>
+								<option value="Vendor">25/06/2019</option>
+							</select></td>
+							<td><select class="form-control" id="sel1">
+							<option value="Vendor">Date End</option>
+								<option value="Vendor">22/06/2019</option>
+								<option value="Vendor">23/06/2019</option>
+								<option value="Vendor">24/06/2019</option>
+								<option value="Vendor">28/06/2019</option>
+								<option value="Vendor">29/06/2019</option>
+							</select></td>
+							<td><select class="form-control" id="sel1">
+								<option value="Vendor">Leave Coverage</option>
+								<option value="Vendor">-</option>
+								<option value="Vendor">-</option>
+								<option value="Vendor">-</option>
+								<option value="Vendor">-</option>
+							</select></td>
+						</tr>
+						<tr>
+							<th>Emp ID</th>
+							<th>Emp Name</th>
+							<th>Leave Type</th>
+							<th>Date Start</th>
+							<th>Date End</th>
+							<th>Leave Coverage</th>
+						</tr>
+					</thead>
+					<tbody> 
+							
+						<!-- | paginate: { 
+							itemsPerPage: pageSize,
+							currentPage: p,
+							totalItems: total } -->
+						<tr>
+							<td>001</td>
+							<td>Charyulu Samudrala</td>
+							<td>Sick</td>
+							<td>05/06/2019</td>
+							<td>07/06/2019</td>
+							<td>Varadarajan Soriraja</td>
+						</tr>
+						<tr>
+							<td>002</td>
+							<td>Varadarajan Soriraja</td>
+							<td>PTO</td>
+							<td>06/06/2019</td>
+							<td>07/06/2019</td>
+							<td>Balaji Sambasivam</td>
+						</tr>
+						<tr>
+							<td>003</td>
+							<td>Gopal Bhattar</td>
+							<td>Sick</td>
+							<td>04/06/2019</td>
+							<td>05/06/2019</td>
+							<td>Seenu Srinivasan</td>
+						</tr>
+						<tr>
+							<td>004</td>
+							<td>Balaji Sambasivam</td>
+							<td>Sick</td>
+							<td>04/06/2019</td>
+							<td>05/06/2019</td>
+							<td>Padma</td>
+						</tr> 
+						<tr> 
+							<td>005</td>
+							<td>Seenu Srinivasan</td>
+							<td>Sick</td>
+							<td>04/06/2019</td>
+							<td>05/06/2019</td>
+							<td>Gopal Bhattar</td>
+						</tr>
+						<tr> 
+							<td>006</td>
+							<td>Padma</td>
+							<td>PTO</td>
+							<td>05/06/2019</td>
+							<td>06/06/2019</td>
+							<td>Balaji Sambasivam</td>
+						</tr>
+						
+					</tbody>
+				</table>
+				<!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+						<div style="text-align:center; width:100%;">
+							<button class="mdc-button mdc-button--raised btn2" [routerLink]="['/employee/apply_leave']"><a style="color:#fff!important;">Create new Leave</a></button>
+						</div>
+						</div>
+					</div>
+					
+			  </div>
+            </div>
+          </div>
+        </div>

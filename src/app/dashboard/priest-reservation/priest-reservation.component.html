@@ -1,0 +1,122 @@
+<div class="statusbar-overlay"></div>
+<div class="panel-overlay"></div>
+<div class="views">
+  <div class="view view-main">
+    <div class="pages navbar-through toolbar-through">
+      <div data-page="index" class="page">
+        <div class="page-content">
+          <div class="list-block">
+            <div class="section-heading">
+                <div class="left lt"><a class="cursor_pointer" (click)="back()"><i
+                  class="fa fa-chevron-left"> Back</i></a></div>
+              <h3>Priest Reservation <a href="javascript.void(0)" [routerLink]="['/temple_schedule']">Temple
+                  Schedule</a></h3>
+            </div>
+            <div class="clear"></div>
+            <div class="features-product">
+
+              <div class="row">
+                <div class="container">
+                  <form #formVal="ngForm" style="margin:38px 48px;">
+                    
+                    <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl f_name">
+                      <input type="text" #f_name id="f_name" name="first_name" ngModel required class="mdc-text-field__input">
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label for="f_name" class="mdc-floating-label">First Name</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+
+                    <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl l_name">
+                      <input type="text" #l_name id="l_name" name="last_name" ngModel class="mdc-text-field__input">
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label for="l_name" class="mdc-floating-label">Last Name</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                   
+                    <div class="mdc-text-field mdc-text-field--textarea address">
+                        <textarea id="textarea" class="mdc-text-field__input" name="address" required ngModel rows="8" cols="40"></textarea>
+                        <div class="mdc-notched-outline">
+                          <div class="mdc-notched-outline__leading"></div>
+                          <div class="mdc-notched-outline__notch">
+                            <label for="textarea" class="mdc-floating-label">Address</label>
+                          </div>
+                          <div class="mdc-notched-outline__trailing"></div>
+                        </div>
+                      </div>
+                    
+                    <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl mobile">
+                      <input type="text" pattern="[0-9]+" #mobile id="mobile" name="mobile_no" required ngModel class="mdc-text-field__input">
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label for="mobile" class="mdc-floating-label">Mobile</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                    
+                    <div class="mdc-text-field mdc-text-field--outlined new-pur-contorl email">
+                      <input type="text" pattern="[A-Za-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" required name="email" ngModel #email id="email" class="mdc-text-field__input">
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label for="email" class="mdc-floating-label">Email</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                    
+                    <div class="mdc-select mdc-select--outlined new-pur-contorl services">
+                      <i class="material-icons position_detect">
+                        arrow_drop_down
+                      </i>
+                      <select class="mdc-select__native-control" name="puja_id" ngModel required>
+                        <option value="" disabled selected></option>
+                        <option [value]="service.puja_id" *ngFor="let service of allService">{{service.puja_name}}</option>
+                       
+                      </select>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label class="mdc-floating-label">Services</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+                    
+                    <div class="mdc-text-field mdc-text-field--outlined new-pur-contor date">
+                      <input type="text" [matDatepicker]="picker3" #date id="date" class="mdc-text-field__input" name="date" ngModel required>
+                      <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                      <mat-datepicker #picker3 color="primary"></mat-datepicker>
+                      <div class="mdc-notched-outline">
+                        <div class="mdc-notched-outline__leading"></div>
+                        <div class="mdc-notched-outline__notch">
+                          <label for="date" class="{{date.value?'mdc-floating-label--float-above':''}} mdc-floating-label">Date</label>
+                        </div>
+                        <div class="mdc-notched-outline__trailing"></div>
+                      </div>
+                    </div>
+
+                    
+                    <button class="mdc-button mdc-button--raised btn2" [disabled]="!formVal.valid" (click)="priestSchedule(formVal.value)">Submit</button>
+                  </form>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

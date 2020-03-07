@@ -1,0 +1,42 @@
+<div class="statusbar-overlay"></div>
+    <div class="panel-overlay"></div>
+    <div class="views">
+      <div class="view view-main">
+        <div class="pages navbar-through toolbar-through">
+          <div data-page="index" class="page">
+            <div class="page-content">	
+			  <div class="list-block">
+						
+					  <div class="section-heading">
+					  <div class="left lt"><a class="cursor_pointer" (click)="back()"><i class="fa fa-chevron-left"> Back</i></a></div>
+							<h3>Purchase Module</h3>
+						</div>	
+						<div class="clear"></div>
+					<div class="features-product">
+						<div class="row">
+						<div class="shopbox reservation_bg" *ngIf="role=='1' || role==1">
+									<a href="javasvript.void(0)" [routerLink]="['new']">
+									<i class="fa fa-pencil-square-o fa_size"></i>
+									<h3>New Purchase Order</h3>
+									</a> 
+								</div>
+								<div class="shopbox im_bg">
+									<a href="javasvript.void(0)" [routerLink]="['po_maintenance']">
+									<i class="fa fa-map-marker fa_size"></i>
+									<h3>Purchase Order Tracker</h3>
+									</a>
+								</div>
+								<div class="shopbox po_bg">
+								<a href="javasvript.void(0)" [routerLink]="['inventory']">
+									<i class="fa fa-cubes fa_size"></i>
+									<h3>Inventory</h3>
+								</a>	
+								</div>
+						</div>
+					</div>
+				</div>
+			  </div>
+            </div>
+          </div>
+        </div>
+      </div>
